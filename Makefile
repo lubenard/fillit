@@ -6,7 +6,7 @@
 #    By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/07 18:10:34 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/07 18:13:37 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,12 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
+	cd libft && make clean
 
 fclean: clean
 	rm -f $(NAME)
+	cd libft && make fclean
+
+mclean: all clean
 
 re: fclean all
