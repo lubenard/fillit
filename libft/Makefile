@@ -6,7 +6,7 @@
 #    By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/06 17:26:07 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/07 13:37:47 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,8 @@ all:  $(NAME)
 $(NAME): $(OBJ)
 	gcc -c $(CFLAGS) $(SRC)
 	ar rcs $(NAME) $(OBJ)
+
+mclean: all clean
 
 clean:
 	rm -f $(OBJ)
