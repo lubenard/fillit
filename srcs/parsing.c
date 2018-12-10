@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 08:57:17 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/10 13:33:39 by lubenard         ###   ########.fr       */
+/*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
+/*   Updated: 2018/12/10 12:10:53 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+#include <stdio.h>
+
+void	parsing(char *str)
 {
-	char		*ret;
-	size_t		i;
+	t_triomino	*lkd_list;
+	int			i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	if (!(ret = (char *)malloc(sizeof(char) * len + 1)))
-		return (0);
-	while (i < len)
+	lkd_list = NULL;
+	while (str[i])
 	{
-		ret[i] = s[start + i];
-		i++;
+		printf("Je rentre dans ma boucle\n");
+		while (str[i] != '\n')
+			i++;
+		printf("%d\n", i);
+		if (!(lkd_list->firstline = (char *)malloc(sizeof(char) * 5)))
+			return ;
+		lkd_list->firstline = ft_strsub(str, 0, i);
+		printf("%s\n", lkd_list->firstline);
 	}
-	ret[i] = '\0';
-	return (ret);
 }

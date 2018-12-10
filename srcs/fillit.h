@@ -6,7 +6,7 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/07 17:11:47 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/10 13:37:41 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,20 @@
 # include "../libft/libft.h"
 # include <string.h>
 
-# define BUFF 1024
+# define BUFF 545
 
-int		usage(void);
-int		error(void);
+int					usage(void);
+int					error(void);
+void				parsing(char *str);
+
+typedef struct		s_triomino
+{
+	char				*firstline;
+	char				*secondline;
+	char				*thirdline;
+	char				*lastline;
+	struct s_triomino	*next;
+	struct s_triomino	*previous;
+}					t_triomino;
+
 #endif
