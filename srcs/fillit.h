@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/10 13:54:10 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:09:27 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLIT_H
 
 # include "../libft/libft.h"
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define BUFF 545
 
@@ -28,8 +28,8 @@ typedef struct		s_triomino
 	char				*secondline;
 	char				*thirdline;
 	char				*lastline;
-	struct s_triomino	*next;
 	struct s_triomino	*previous;
+	struct s_triomino	*next;
 }					t_triomino;
 
 #endif

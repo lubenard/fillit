@@ -6,7 +6,7 @@
 #    By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/10 11:59:25 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/11 15:56:09 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS = -Wall -Wextra -Werror
 all:  $(NAME)
 
 $(NAME): $(OBJ)
-	cd libft && make mclean
+	cd libft && make
 	gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 
 clean:
