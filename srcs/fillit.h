@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/10 13:47:25 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/11 15:26:18 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include "../libft/libft.h"
+# include <fcntl.h>
 
 # define BUFF 545
 
