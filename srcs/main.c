@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 16:10:03 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:11:47 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*read_file(char *arg)
 	return (str);
 }
 
-int		check_params(char argc, char **argv)
+int		check_params(char argc)
 {
 	if (argc == 1 || argc > 2)
 		return (usage());
@@ -47,7 +47,7 @@ int		check_params(char argc, char **argv)
 int		main(int argc, char **argv)
 {
 	char *str;
-	if (check_params(argc, argv) == -1)
+	if (check_params(argc) == -1)
 		return (-1);
 	if (!(str = read_file(argv[1])))
 		return (error());
