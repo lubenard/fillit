@@ -6,7 +6,7 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 12:34:13 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:08:35 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,35 @@ void			parsing(char *str)
 {
 	t_triomino	*lkd_list;
 	int			i;
+	int			line = 0;
 
 	lkd_list = new_tetrimino();
 	i = 0;
 	while (str[i])
 	{
-		lkd_list->firstline = ft_strsub(str, i, 4);
-		printf("%s\n", ft_strsub(str,i, 3));
+		//lkd_list->firstline = ft_strsub(str, i, 4);
+		printf("Premiere ligne: %s\n", ft_strsub(str, i, 4));
 		while (str[i] != '\n')
 			i++;
-		lkd_list->secondline = ft_strsub(str, ++i, 4);
-		printf("%s\n", ft_strsub(str,++i, 3));
+		line++;
+		printf("ligne = %d\n", line);
+		//lkd_list->secondline = ft_strsub(str, ++i, 4);
+		printf("Deuxieme ligne: %s\n", ft_strsub(str, ++i, 4));
 		while(str[i] != '\n')
 			i++;
-		lkd_list->thirdline = ft_strsub(str, ++i, 4);
-		printf("%s\n", ft_strsub(str,++i, 3));
+		line++;
+		printf("line = %d\n", line);
+		//lkd_list->thirdline = ft_strsub(str, ++i, 4);
+		printf("Troisieme ligne: %s\n", ft_strsub(str, ++i, 4));
 		while(str[i] != '\n')
 			i++;
-		lkd_list->lastline = ft_strsub(str, ++i, 4);
-		printf("%s\n", ft_strsub(str,++i, 3));
+		line++;
+		printf("%d\n", line);
+		//lkd_list->lastline = ft_strsub(str, ++i, 4);
+		printf("Derniere ligne: %s\n", ft_strsub(str, ++i, 4));
 		printf("\n");
+		line++;
+		printf("On s'arrete sur ce charactere: %c %d ligne = %d str[%d] et str[i] -1 = %c",str[i], str[i], line, i, str[i - 1]);
 	}
 		//printf("firstline: %s\nSecond Line: %s\nThirdLine: %s\nLastLine: %s\n", lkd_list->firstline, lkd_list->secondline, \
 		//		lkd_list->thirdline, lkd_list->lastline);
