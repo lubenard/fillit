@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+         #
+#    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/11 15:56:09 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/12 15:18:10 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = fillit
 
 SRC = srcs/main.c \
 	  srcs/parsing.c \
-	  srcs/utils.c
+	  srcs/utils.c \
+	  srcs/valid_file.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,6 +25,9 @@ all:  $(NAME)
 
 $(NAME): $(OBJ)
 	cd libft && make
+	gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
+
+onlyfillit:
 	gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 
 clean:

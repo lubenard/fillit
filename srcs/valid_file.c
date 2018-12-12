@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/11 16:22:24 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/12 15:45:56 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,31 @@ int		check4x4(char *str)
 
 	ptr = str;
 	j = 0;
+	i = 0;
+	if (ptr[0] == 0)
+		return (-1);
 	while (ptr[i] != 0)
 	{
 		i = 0;
 		while (ptr[i] != '\n' && j < 4)
 		{
-			if (i == 4)
+			if (i >= 4)
 				return(-1);
 			i++;
 		}
+		if (i != 4)
+			return (-1);
 		ptr = ptr + i + 1;
 		if (j < 4)
+		{
+			if (ptr[i] != '.' || ptr[i] != '#')
+			{
+				ft_putstr("Prob de J\n");
+				return(-1);
+			}
 			j++;
-		else
+		}
+		else if (j == 4)
 		{
 			if (ptr[0] != '\n')
 				return (-1);
@@ -40,11 +52,16 @@ int		check4x4(char *str)
 			j = 0;
 		}
 	}
+	return (0);
 }
 
 int		valid_file(char *str)
 {
-
+	if (check4x4(str))
+	{
+		ft_putstr("Not a valid file fuck\n");
+		return (-1);
+	}
 	return (0);
 }
 

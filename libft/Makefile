@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+         #
+#    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/08 19:40:26 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/12 15:10:36 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,15 +84,20 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -c $(CFLAGS) $(SRC)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
+	@echo done_libft
+
+%.o : %.c
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 mclean: all clean
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ) 
+	@echo done_clean_libft
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME) a.out a.out.dSYM
+	@echo done_fclean_libft
 
 re: fclean all

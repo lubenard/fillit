@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 12:58:56 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/12 14:02:46 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int					usage(void);
 int					error(void);
 void				parsing(char *str);
+int					valid_file(char *str);
 
 typedef struct		s_triomino
 {
