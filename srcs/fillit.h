@@ -6,14 +6,13 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/11 15:26:18 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/12 12:58:56 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <unistd.h>
 # include "../libft/libft.h"
 # include <fcntl.h>
 
@@ -29,8 +28,8 @@ typedef struct		s_triomino
 	char				*secondline;
 	char				*thirdline;
 	char				*lastline;
-	struct s_triomino	*next;
 	struct s_triomino	*previous;
+	struct s_triomino	*next;
 }					t_triomino;
 
 #endif
