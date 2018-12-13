@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/12 15:10:36 by jmoussu          ###   ########.fr        #
+#    Updated: 2018/12/13 13:39:52 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,11 +81,13 @@ OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
+GREEN_OK = "\033[0;32m DONE ! \033[00m"
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo done_libft
+	@echo libft${GREEN_OK}
 
 %.o : %.c
 	@$(CC) -c $(CFLAGS) $< -o $@
@@ -94,10 +96,10 @@ mclean: all clean
 
 clean:
 	@rm -f $(OBJ) 
-	@echo done_clean_libft
+	@echo clean libft${GREEN_OK}
 
 fclean: clean
 	@rm -f $(NAME) a.out a.out.dSYM
-	@echo done_fclean_libft
+	@echo fclean libf${GREEN_OK}
 
 re: fclean all
