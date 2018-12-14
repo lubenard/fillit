@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/14 14:55:10 by jmoussu          ###   ########.fr        #
+#    Updated: 2018/12/14 15:40:21 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@ $(NAME): $(OBJ)
 	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 	@echo fillit ${GREEN_OK}
 
+%.o : %.c
+	@$(CC) -c $(CFLAGS) $< -o $@
+
 onlyfillit:
 	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 	@echo onlyfillit ${GREEN_OK}
@@ -41,6 +44,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@cd libft && rm -f libft.a
 	@echo fclean fillit ${GREEN_OK}
 
 mclean: all clean
