@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 22:14:54 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/14 22:19:06 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ t_tetrimino		*parsing(char *str)
 		lkd_list->next = new_element;
 		lkd_list = new_element;
 	}
-	printf("Well it run cool !\n");
+	printf("Well parsing it run cool !\n");
 	return (first_element);
 }
