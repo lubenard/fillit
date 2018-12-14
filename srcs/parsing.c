@@ -6,7 +6,7 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 15:08:35 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/14 10:56:26 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,53 @@
 
 #include <stdio.h>
 
-t_triomino		*new_tetrimino(void)
+t_tetrimino		*new_tetrimino(void)
 {
-	t_triomino	*list;
+	t_tetrimino		*list;
 
-	if (!(list = (t_triomino *)malloc(sizeof(*list))))
+	if (!(list = (t_tetrimino *)malloc(sizeof(*list))))
 		return (0);
-	if (!(list->firstline = malloc(sizeof(char) * 5)) || \
-		!(list->secondline = malloc(sizeof(char) * 5)) || \
-		!(list->thirdline = malloc(sizeof(char) * 5)) || \
-		!(list->lastline = malloc(sizeof(char) * 5)))
+	if (!(list->tetrimino = malloc(sizeof(char) * 5)) || \
+		!(list->tetrimino[0] = malloc(sizeof(char) * 5)) || \
+		!(list->tetrimino[1] = malloc(sizeof(char) * 5)) || \
+		!(list->tetrimino[2] = malloc(sizeof(char) * 5)) || \
+		!(list->tetrimino[3] = malloc(sizeof(char) * 5 )))
 		return (NULL);
+	list->tetrimino[0][5] = '\0';
 	list->next = NULL;
 	list->previous = NULL;
 	return (list);
 }
 
-void			parsing(char *str)
+int			parsing(char *str)
 {
-	t_triomino	*lkd_list;
+	t_tetrimino	*lkd_list;
+	t_tetrimino	*new_element;
 	int			i;
-	int			line = 0;
 
-	lkd_list = new_tetrimino();
+	if (!(lkd_list = new_tetrimino()))
+			return (-1);
 	i = 0;
 	while (str[i])
 	{
-		//lkd_list->firstline = ft_strsub(str, i, 4);
-		printf("Premiere ligne: %s\n", ft_strsub(str, i, 4));
+		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
 		while (str[i] != '\n')
 			i++;
-		line++;
-		printf("ligne = %d\n", line);
-		//lkd_list->secondline = ft_strsub(str, ++i, 4);
-		printf("Deuxieme ligne: %s\n", ft_strsub(str, ++i, 4));
-		while(str[i] != '\n')
+		lkd_list->tetrimino[1] = ft_strsub(str, ++i, 4);
+		while (str[i] != '\n')
 			i++;
-		line++;
-		printf("line = %d\n", line);
-		//lkd_list->thirdline = ft_strsub(str, ++i, 4);
-		printf("Troisieme ligne: %s\n", ft_strsub(str, ++i, 4));
-		while(str[i] != '\n')
+		lkd_list->tetrimino[2] = ft_strsub(str, ++i, 4);
+		while (str[i] != '\n')
 			i++;
-		line++;
-		printf("%d\n", line);
-		//lkd_list->lastline = ft_strsub(str, ++i, 4);
-		printf("Derniere ligne: %s\n", ft_strsub(str, ++i, 4));
-		printf("\n");
-		line++;
-		printf("On s'arrete sur ce charactere: %c %d ligne = %d str[%d] et str[i] -1 = %c",str[i], str[i], line, i, str[i - 1]);
+		lkd_list->tetrimino[3] = ft_strsub(str, ++i, 4);
+		while (str[i] != '\n')
+			i++;
+		i += 2;
+		//printf("%s\n%s\n%s\n%s\n\n", lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3]);
+		if (!(new_element = new_tetrimino()))
+			return (-1);
+		lkd_list->next = new_element;
+		lkd_list = new_element;
 	}
-		//printf("firstline: %s\nSecond Line: %s\nThirdLine: %s\nLastLine: %s\n", lkd_list->firstline, lkd_list->secondline, \
-		//		lkd_list->thirdline, lkd_list->lastline);
+	return (0);
 }
