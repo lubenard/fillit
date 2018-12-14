@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/12 15:45:56 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/12 17:55:23 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,49 @@ int		check4x4(char *str)
 		return (-1);
 	while (ptr[i] != 0)
 	{
-		i = 0;
-		while (ptr[i] != '\n' && j < 4)
+		while (ptr[i] != '\n' && ptr[i] != '\0')
 		{
 			if (i >= 4)
+			{
+				ft_putstr("Ligne trop grande\n");
 				return(-1);
+			}
 			i++;
 		}
-		if (i != 4)
-			return (-1);
-		ptr = ptr + i + 1;
-		if (j < 4)
-		{
-			if (ptr[i] != '.' || ptr[i] != '#')
+		if (i != 4 || ptr[i] == '\0')
 			{
-				ft_putstr("Prob de J\n");
+				ft_putstr("Ligne trop Petite\n");
+				return(-1);
+			}
+		ptr = ptr + i + 1;
+		ft_putstr("JUMP LINE\n");
+		if (j < 3)
+		{
+			if (!(ptr[0] == '.' || ptr[0] == '#'))
+			{
+				ft_putstr("Il y pas le bon nombre de ligne\n");
 				return(-1);
 			}
 			j++;
 		}
-		else if (j == 4)
+		else if (j == 3)
 		{
+			ft_putstr("J est a 4\n");
 			if (ptr[0] != '\n')
+			{
+				if (ptr[0] == '\0')
+					return(0);
+				ft_putstr("Tétrimino pas séparer par un backN\n");
 				return (-1);
+			}
+			if (!(ptr[1] == '.' || ptr[1] == '#'))
+			{
+				return (-1);
+			}
 			ptr++;
 			j = 0;
 		}
+		i = 0;
 	}
 	return (0);
 }
