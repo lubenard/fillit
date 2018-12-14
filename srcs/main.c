@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 14:06:34 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/14 16:55:51 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		main(int argc, char **argv)
 		return (error());
 	else
 		ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if (parsing(read_file(argv[1])) == -1)
-		return (-1);
+	if (parsing(read_file(argv[1])) == NULL)
+		return (error());
 	return (0);
 }
