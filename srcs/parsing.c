@@ -6,7 +6,7 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/13 15:52:39 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/14 10:56:26 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ t_tetrimino		*new_tetrimino(void)
 	return (list);
 }
 
-void			parsing(char *str)
+int			parsing(char *str)
 {
 	t_tetrimino	*lkd_list;
-	t_tetrimino	*test;
+	t_tetrimino	*new_element;
 	int			i;
 
-	lkd_list = new_tetrimino();
+	if (!(lkd_list = new_tetrimino()))
+			return (-1);
 	i = 0;
 	while (str[i])
 	{
@@ -55,9 +56,11 @@ void			parsing(char *str)
 		while (str[i] != '\n')
 			i++;
 		i += 2;
-		printf("%s\n%s\n%s\n%s\n\n", lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3]);
-		test = new_tetrimino();
-		lkd_list->next = test;
-		lkd_list = test;
+		//printf("%s\n%s\n%s\n%s\n\n", lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3]);
+		if (!(new_element = new_tetrimino()))
+			return (-1);
+		lkd_list->next = new_element;
+		lkd_list = new_element;
 	}
+	return (0);
 }

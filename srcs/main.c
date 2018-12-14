@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 16:11:47 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/14 11:11:21 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,16 @@ int		check_params(char argc)
 int		main(int argc, char **argv)
 {
 	char *str;
+
 	if (check_params(argc) == -1)
 		return (-1);
 	if (!(str = read_file(argv[1])))
 		return (error());
-	//if (valid_file(str) == -1)
-	//{
-	//	ft_putstr("valid_file a renvoyer -1\n");
-	//	return(error());
-	//}
-	//else
-	//{
-	//	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUER \n");
-	//}
-	parsing(read_file(argv[1]));
+	if (valid_file(str) == -1)
+		return (error());
+	else
+		ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
+	if (parsing(read_file(argv[1])) == -1)
+		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/13 15:11:15 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/14 11:03:07 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int					usage(void);
 int					error(void);
-void				parsing(char *str);
+int				parsing(char *str);
 int					valid_file(char *str);
 
 typedef struct		s_tetrimino
