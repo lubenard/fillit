@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 11:03:07 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/14 22:06:38 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@
 
 # define BUFF 1024
 
-int					usage(void);
-int					error(void);
+int				usage(void);
+int				error(void);
 int				parsing(char *str);
-int					valid_file(char *str);
+int				valid_file(char *str);
+char			**ini_map(int size, int max);
+void			display_map(char **map);
 
-typedef struct		s_tetrimino
+typedef struct	s_tetrimino
 {
 	char				**tetrimino;
 	struct s_tetrimino	*previous;
 	struct s_tetrimino	*next;
-}					t_tetrimino;
+}				t_tetrimino;
 
 #endif

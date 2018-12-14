@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 14:06:34 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/14 21:36:39 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,33 @@ char	*read_file(char *arg)
 int		check_params(char argc)
 {
 	if (argc == 1 || argc > 2)
+		return (-1);
+	return (0);
+}
+
+int		all_error(int argc, char **argv, char **str)
+{
+	if (check_params(argc))
 		return (usage());
-	return (1);
+	if (!(*str = read_file(argv[1])))
+		return (error());
+	if (valid_file(*str))
+		return (error());
+	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
+	if (parsing(read_file(argv[1])))
+		return (error());
+	return (0);
 }
 
 int		main(int argc, char **argv)
 {
 	char *str;
-	if (check_params(argc) == -1)
+	char **map;
+
+	str = NULL;
+	if (all_error(argc, argv, &str))
 		return (-1);
-	if (!(str = read_file(argv[1])))
-		return (error());
-	if (valid_file(str) == -1)
-		return (error());
-	else
-		ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if (parsing(read_file(argv[1])) == -1)
-		return (-1);
+	map = ini_map(4, 90);
+	display_map(map);
 	return (0);
 }

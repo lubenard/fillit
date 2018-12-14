@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/14 15:23:27 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/14 20:50:20 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		valid_file(char *str)
 	}
 	if (check4x4(str))
 	{
-		ft_putstr("Not a valid file fuck\n");
+		ft_putstr("C'est des carré de 4x4 avec des retour a la ligne\n");
 		return (-1);
 	}
 	return (0);
