@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/13 15:02:43 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/14 14:55:10 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,12 @@ all:  $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft && make
-	@gcc -o $(NAME) $(CFLAGS) $(OBJ) libft/libft.a -Isrcs/
+	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 	@echo fillit ${GREEN_OK}
 
 onlyfillit:
-	@gcc -o $(NAME) $(CFLAGS) $(OBJ) libft/libft.a -Isrcs/
+	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
+	@echo onlyfillit ${GREEN_OK}
 
 clean:
 	@rm -f $(OBJ)

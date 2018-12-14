@@ -6,13 +6,38 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/14 14:06:53 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/14 15:23:27 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 #include <stdio.h>
+
+int		cut4x4(int *i, int *j, char **ptr)
+{
+	if (*j < 3)
+	{
+		if (!((*ptr)[0] == '.' || (*ptr)[0] == '#'))
+			return (-1);
+		(*j)++;
+	}
+	else if (*j == 3)
+	{
+		if ((*ptr)[0] != '\n')
+		{
+			if ((*ptr)[0] == '\0')
+				return (0);
+			return (-1);
+		}
+		if (!((*ptr)[1] == '.' || (*ptr)[1] == '#'))
+			return (-1);
+		(*ptr)++;
+		*j = 0;
+	}
+	*i = 0;
+	return (0);
+}
 
 int		check4x4(char *str)
 {
@@ -30,52 +55,50 @@ int		check4x4(char *str)
 		while (ptr[i] != '\n' && ptr[i] != '\0')
 		{
 			if (i >= 4)
-			{
-				ft_putstr("Ligne trop grande\n");
-				return(-1);
-			}
+				return (-1);
 			i++;
 		}
 		if (i != 4 || ptr[i] == '\0')
-			{
-				ft_putstr("Ligne trop Petite\n");
-				return(-1);
-			}
+			return (-1);
 		ptr = ptr + i + 1;
-		ft_putstr("JUMP LINE\n");
-		if (j < 3)
-		{
-			if (!(ptr[0] == '.' || ptr[0] == '#'))
-			{
-				ft_putstr("Il y pas le bon nombre de ligne\n");
-				return(-1);
-			}
+		if (cut4x4(&i, &j, &ptr))
+			return (-1);
+	}
+	return (0);
+}
+
+int		check_char_line(char *str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] != '.' && str[i] != '#' && str[i] != '\n')
+			return (-1);
+		i++;
+	}
+	j = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n')
 			j++;
-		}
-		else if (j == 3)
-		{
-			ft_putstr("J est a 4\n");
-			if (ptr[0] != '\n')
-			{
-				if (ptr[0] == '\0')
-					return(0);
-				ft_putstr("Tétrimino pas séparer par un backN\n");
-				return (-1);
-			}
-			if (!(ptr[1] == '.' || ptr[1] == '#'))
-			{
-				return (-1);
-			}
-			ptr++;
-			j = 0;
-		}
-		i = 0;
+		if (j >= 130)
+			return (-1);
+		i++;
 	}
 	return (0);
 }
 
 int		valid_file(char *str)
 {
+	if (check_char_line(str))
+	{
+		ft_putstr("Prob char ou trop de ligne\n");
+		return (-1);
+	}
 	if (check4x4(str))
 	{
 		ft_putstr("Not a valid file fuck\n");
