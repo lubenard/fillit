@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 22:06:36 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/15 17:16:48 by luca             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 
 /*
-** /\/\/\/\Back Tracking /\/\/\/\
+** ------Back Tracking-----
 **
 ** Comment crée la map ?
 **		Commencer par une map grnade !

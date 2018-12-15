@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 22:19:06 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/15 18:02:02 by luca             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,36 @@ int				verif_tetrimino(char **str)
 	int i;
 	int compteur;
 	int e;
+	int connections;
 
 	e = 0;
 	i = 0;
 	compteur = 0;
+	connections = 0;
 	while (i < 4)
 	{
 		while (e < 4)
 		{
 			if (str[i][e] == '#')
+			{
+				if (i != 0 && str[i - 1][e] == '#')
+					connections++;
+				if (i != 3 && str[i + 1][e] == '#')
+					connections++;
+				if (e != 0 && str[i][e - 1] == '#')
+					connections++;
+				if (e != 3 && str[i][e + 1] == '#')
+					connections++;
 				compteur++;
+			}
 			e++;
 		}
 		i++;
 		e = 0;
-		if (compteur != 4)
-			return (-1);
 	}
+	printf("connections = %d compteur = %d\n", connections,compteur);
+	if (compteur != 4 || (connections != 6 && connections != 8))
+		return (-1);
 	return (0);
 }
 
@@ -89,6 +102,5 @@ t_tetrimino		*parsing(char *str)
 		lkd_list->next = new_element;
 		lkd_list = new_element;
 	}
-	printf("Well parsing it run cool !\n");
 	return (first_element);
 }

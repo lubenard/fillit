@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 22:14:47 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/15 17:52:42 by luca             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ char	*read_file(char *arg)
 		return (NULL);
 	}
 	if (read(fd, str, BUFF) < 0)
+	{
+		printf("Erreur de lecture\n");
 		return (NULL);
+	}
 	if (close(fd) == -1)
 	{
 		ft_putstr("Close Fail.\n");
@@ -53,7 +56,7 @@ int		all_error(int argc, char **argv, char **str)
 	if (valid_file(*str))
 		return (error());
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if (parsing(read_file(argv[1])))
+	if (parsing(read_file(argv[1])) == NULL)
 		return (error());
 	return (0);
 }
