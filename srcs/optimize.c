@@ -6,8 +6,14 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:23:35 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 13:24:16 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:54:15 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fillit.h"
 
+int		optimize_tetri(t_tetri lkd_list)
+{
+
+	return (0);
+}

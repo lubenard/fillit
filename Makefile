@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/14 22:06:39 by jmoussu          ###   ########.fr        #
+#    Updated: 2018/12/17 13:55:01 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME = fillit
 SRC = srcs/main.c \
 	  srcs/parsing.c \
 	  srcs/utils.c \
+	  srcs/optimize.c \
 	  srcs/valid_file.c \
+	  srcs/valid_file_2.c \
 	  srcs/solve.c \
 	  srcs/map.c
 
