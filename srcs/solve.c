@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/15 17:16:48 by luca             ###   ########.fr       */
+/*   Updated: 2018/12/17 09:31:49 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 **		On vérifie Qu'il y a des point la ou on veux placer le tériminos
 **
 ** Comment placer les tétriminos ?
-**		On palce t1[0][0] dans map[0][0]
+**		On palce t1[0][0 dans map[0][0]
 **		On remplace les # par ABC
 **		Puis on place ABC a la place des point
 **

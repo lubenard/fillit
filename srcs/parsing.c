@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/15 18:02:02 by luca             ###   ########.fr       */
+/*   Updated: 2018/12/17 10:26:43 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #include <stdio.h>
 
-t_tetrimino		*new_tetrimino(void)
+t_tetri		*new_tetrimino(void)
 {
-	t_tetrimino		*list;
+	t_tetri		*list;
 
-	if (!(list = (t_tetrimino *)malloc(sizeof(*list))))
+	if (!(list = (t_tetri *)malloc(sizeof(*list))))
 		return (0);
 	if (!(list->tetrimino = malloc(sizeof(char) * 4)) || \
 		!(list->tetrimino[0] = malloc(sizeof(char) * 4)) || \
@@ -31,55 +31,10 @@ t_tetrimino		*new_tetrimino(void)
 	return (list);
 }
 
-int				verif_tetrimino(char **str)
+int			compute(t_tetri *lkd_list, int i, char *str)
 {
-	int i;
-	int compteur;
-	int e;
-	int connections;
+	t_tetri	*new_element;
 
-	e = 0;
-	i = 0;
-	compteur = 0;
-	connections = 0;
-	while (i < 4)
-	{
-		while (e < 4)
-		{
-			if (str[i][e] == '#')
-			{
-				if (i != 0 && str[i - 1][e] == '#')
-					connections++;
-				if (i != 3 && str[i + 1][e] == '#')
-					connections++;
-				if (e != 0 && str[i][e - 1] == '#')
-					connections++;
-				if (e != 3 && str[i][e + 1] == '#')
-					connections++;
-				compteur++;
-			}
-			e++;
-		}
-		i++;
-		e = 0;
-	}
-	printf("connections = %d compteur = %d\n", connections,compteur);
-	if (compteur != 4 || (connections != 6 && connections != 8))
-		return (-1);
-	return (0);
-}
-
-t_tetrimino		*parsing(char *str)
-{
-	t_tetrimino	*lkd_list;
-	t_tetrimino	*new_element;
-	t_tetrimino	*first_element;
-	int			i;
-
-	i = 0;
-	if (!(lkd_list = new_tetrimino()))
-		return (NULL);
-	first_element = lkd_list;
 	while (str[i])
 	{
 		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
@@ -96,11 +51,26 @@ t_tetrimino		*parsing(char *str)
 			i++;
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
-			return (NULL);
+			return (-1);
 		if (!(new_element = new_tetrimino()))
-			return (NULL);
+			return (-1);
 		lkd_list->next = new_element;
 		lkd_list = new_element;
 	}
+	return (0);
+}
+
+t_tetri		*parsing(char *str)
+{
+	t_tetri		*lkd_list;
+	t_tetri		*first_element;
+	int			i;
+
+	i = 0;
+	if (!(lkd_list = new_tetrimino()))
+		return (NULL);
+	first_element = lkd_list;
+	if (compute(lkd_list, i, str) == -1)
+		return (NULL);
 	return (first_element);
 }
