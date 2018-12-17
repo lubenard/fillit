@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 10:26:43 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:40:45 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ t_tetri		*new_tetrimino(void)
 	return (list);
 }
 
-int			compute(t_tetri *lkd_list, int i, char *str)
+int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 {
-	t_tetri	*new_element;
-
 	while (str[i])
 	{
 		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
@@ -55,6 +53,7 @@ int			compute(t_tetri *lkd_list, int i, char *str)
 		if (!(new_element = new_tetrimino()))
 			return (-1);
 		lkd_list->next = new_element;
+		lkd_list->next->previous = lkd_list;
 		lkd_list = new_element;
 	}
 	return (0);
@@ -63,14 +62,16 @@ int			compute(t_tetri *lkd_list, int i, char *str)
 t_tetri		*parsing(char *str)
 {
 	t_tetri		*lkd_list;
+	t_tetri		*new_element;
 	t_tetri		*first_element;
 	int			i;
 
 	i = 0;
+	new_element = NULL;
 	if (!(lkd_list = new_tetrimino()))
 		return (NULL);
 	first_element = lkd_list;
-	if (compute(lkd_list, i, str) == -1)
+	if (compute(lkd_list, new_element, i, str) == -1)
 		return (NULL);
 	return (first_element);
 }
