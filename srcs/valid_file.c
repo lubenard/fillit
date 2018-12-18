@@ -6,13 +6,11 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/14 20:50:20 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/18 16:48:22 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <stdio.h>
 
 int		cut4x4(int *i, int *j, char **ptr)
 {

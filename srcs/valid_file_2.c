@@ -6,12 +6,11 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 10:03:27 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 12:07:09 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/18 16:48:33 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int		check_connections(char **str, int i, int e, int connections)
 {
