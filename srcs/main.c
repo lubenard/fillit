@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/15 17:52:42 by luca             ###   ########.fr       */
+/*   Updated: 2018/12/17 18:09:09 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		check_params(char argc)
 	return (0);
 }
 
-int		all_error(int argc, char **argv, char **str)
+int		all_error(int argc, char **argv, char **str, t_tetri **block)
 {
 	if (check_params(argc))
 		return (usage());
@@ -56,7 +56,7 @@ int		all_error(int argc, char **argv, char **str)
 	if (valid_file(*str))
 		return (error());
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if (parsing(read_file(argv[1])) == NULL)
+	if ((*block = parsing(read_file(argv[1]))) == NULL)
 		return (error());
 	return (0);
 }
@@ -65,11 +65,16 @@ int		main(int argc, char **argv)
 {
 	char *str;
 	char **map;
+	t_tetri *block;
+	int size;
 
+	size = 2;
 	str = NULL;
-	if (all_error(argc, argv, &str))
+	if (all_error(argc, argv, &str, &block))
 		return (-1);
-	map = ini_map(4, 90);
+	map = ini_map(size, 90);
+	display_map(map);
+	map = placeone(block->tetrimino, map, size);
 	display_map(map);
 	return (0);
 }

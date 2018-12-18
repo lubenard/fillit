@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 13:31:45 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/18 15:13:19 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,34 @@
 
 # define BUFF 1024
 
+// t_teti t;
+
+// t->c1[0];
+// t->c1.x;
+
+typedef struct s_coord
+{
+	int x;
+	int y;
+}			t_coord;
+
 typedef struct	s_tetrimino
 {
 	char				**tetrimino;
-	struct s_tetrimino	*previous;
+	/*
+	** crée fonction pour rempir c1 c2 ....
+	*/
+	t_coord 			c1;
+	t_coord 			c2;
+	t_coord 			c3;
+	t_coord 			c4;
+	t_coord 			pos;
+	
+	struct s_tetrimino	*prev;
 	struct s_tetrimino	*next;
 }				t_tetri;
 
+char			**placeone(char **block, char **map, int size);
 int				usage(void);
 int				error(void);
 t_tetri			*parsing(char *str);

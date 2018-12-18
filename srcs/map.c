@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/14 22:06:15 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/17 17:08:45 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ini_map_cut(char **mapy, int *x, int size, int max)
 		(*x)++;
 	}
 }
-
+/*
+**
+** max = size + 3 car un tétri va jamais dépasser de plus de 3 case sur le coté
+*/
 char	**ini_map(int size, int max)
 {
 	int		x;
