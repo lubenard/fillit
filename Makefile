@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/17 13:55:01 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/18 18:36:00 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRC = srcs/main.c \
 	  srcs/valid_file.c \
 	  srcs/valid_file_2.c \
 	  srcs/solve.c \
-	  srcs/map.c
+	  srcs/map.c \
+	  srcs/make_coord.c \
+	  srcs/print_all_list.c
 
 OBJ = $(SRC:.c=.o)
 

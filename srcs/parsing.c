@@ -6,13 +6,11 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 13:40:45 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/18 16:47:49 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <stdio.h>
 
 t_tetri		*new_tetrimino(void)
 {
@@ -27,7 +25,7 @@ t_tetri		*new_tetrimino(void)
 		!(list->tetrimino[3] = malloc(sizeof(char) * 4)))
 		return (NULL);
 	list->next = NULL;
-	list->previous = NULL;
+	list->prev = NULL;
 	return (list);
 }
 
@@ -50,10 +48,11 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
 			return (-1);
+		optimize_tetri(lkd_list->tetrimino);
 		if (!(new_element = new_tetrimino()))
 			return (-1);
 		lkd_list->next = new_element;
-		lkd_list->next->previous = lkd_list;
+		lkd_list->next->prev = lkd_list;
 		lkd_list = new_element;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 15:51:12 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/18 18:39:57 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
+
+# include <stdio.h>
 
 # define BUFF 1024
 
@@ -53,5 +55,10 @@ int				valid_file(char *str);
 char			**ini_map(int size, int max);
 void			display_map(char **map);
 int				verif_tetrimino(char **str);
+int				optimize_tetri(char **str);
+t_tetri			*make_coord(t_tetri *t);
+t_tetri			*make_coord_one(t_tetri *t);
+void			print_all_list(t_tetri *t);
+void			print_list(t_tetri *t);
 
 #endif

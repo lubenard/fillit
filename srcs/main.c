@@ -6,13 +6,11 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 15:50:40 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/18 19:07:48 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <stdio.h>
 
 char	*read_file(char *arg)
 {
@@ -72,9 +70,15 @@ int		main(int argc, char **argv)
 	str = NULL;
 	if (all_error(argc, argv, &str, &block))
 		return (-1);
+
 	map = ini_map(size, 90);
+	ft_putstr("La map au départ\n");
 	display_map(map);
 	map = placeone(block->tetrimino, map, size);
+	ft_putstr("La map après\n");
 	display_map(map);
+	ft_putstr("\nDEBUT JIM\n");
+	block = make_coord(block);
+	print_all_list(block);
 	return (0);
 }
