@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/17 13:31:45 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/18 13:21:58 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int				valid_file(char *str);
 char			**ini_map(int size, int max);
 void			display_map(char **map);
 int				verif_tetrimino(char **str);
+int				optimize_tetri(char **str);
 
 #endif

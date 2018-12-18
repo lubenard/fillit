@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/15 17:52:42 by luca             ###   ########.fr       */
+/*   Updated: 2018/12/18 15:02:10 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ int		all_error(int argc, char **argv, char **str)
 int		main(int argc, char **argv)
 {
 	char *str;
-	char **map;
+	//char **map;
 
 	str = NULL;
 	if (all_error(argc, argv, &str))
 		return (-1);
-	map = ini_map(4, 90);
-	display_map(map);
+	//map = ini_map(4, 90);
+	//display_map(map);
 	return (0);
 }
