@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:38:15 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 15:40:36 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,15 @@ int		all_error(int argc, char **argv, char **str, t_tetri **block)
 
 int		main(int argc, char **argv)
 {
-	char *str;
-	char **map;
-	t_tetri *block;
-	int size;
+	char	*str;
+	char	**map;
+	t_tetri	*block;
+	int		size;
 
 	size = 2;
 	str = NULL;
 	if (all_error(argc, argv, &str, &block))
 		return (-1);
-
 	map = ini_map(size, 90);
 	ft_putstr("La map au départ\n");
 	display_map(map);
@@ -78,7 +77,9 @@ int		main(int argc, char **argv)
 	ft_putstr("La map après\n");
 	display_map(map);
 	ft_putstr("\nDEBUT JIM\n");
-	block = make_coord(block);
+	/*
+	** block = make_coord_p(block);
+	*/
 	print_all_list(block);
 	return (0);
 }

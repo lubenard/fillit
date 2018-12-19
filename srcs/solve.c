@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 15:11:20 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/19 15:15:04 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **		besoin de recupere les coordone des 4 block
 */
 
-char **placeone(char **blockt, char **map, int size)
+char	**placeone(char **blockt, char **map, int size)
 {
 	int		i;
 	int		j;
@@ -27,7 +27,7 @@ char **placeone(char **blockt, char **map, int size)
 
 	newmap = map;
 	j = 0;
-	while(j != 4)
+	while (j != 4)
 	{
 		i = 0;
 		while (i != 4)
@@ -43,7 +43,7 @@ char **placeone(char **blockt, char **map, int size)
 					size++;
 					ft_putstr("recusivité\n");
 					map = ini_map(size, 90);
-					return(placeone(blockt, map, size));
+					return (placeone(blockt, map, size));
 				}
 			}
 			i++;

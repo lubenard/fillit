@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:52:51 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 15:17:10 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 		{
 			if (!(new_element = new_tetrimino()))
 				return (-1);
-		lkd_list->next = new_element;
-		lkd_list->next->prev = lkd_list;
-		lkd_list = new_element;
+			lkd_list->next = new_element;
+			lkd_list->next->prev = lkd_list;
+			lkd_list = new_element;
 		}
 	}
 	return (0);

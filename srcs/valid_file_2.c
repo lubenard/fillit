@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 10:03:27 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 16:48:33 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 15:18:08 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		verif_tetrimino(char **str)
 		}
 		i++;
 	}
-	printf("connections = %d compteur = %d\n", connections, compteur);
 	if (compteur != 4 || (connections != 6 && connections != 8))
 		return (-1);
 	return (0);

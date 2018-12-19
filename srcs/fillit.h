@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:35:00 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 15:10:35 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,20 @@
 
 # define BUFF 1024
 
-// t_teti t;
-
-// t->c1[0];
-// t->c1.x;
-
-typedef struct s_coord
+typedef struct	s_coord
 {
 	int x;
 	int y;
-}			t_coord;
+}				t_coord;
 
 typedef struct	s_tetrimino
 {
 	char				**tetrimino;
-	/*
-	** crée fonction pour rempir c1 c2 ....
-	*/
-	t_coord 			c1;
-	t_coord 			c2;
-	t_coord 			c3;
-	t_coord 			c4;
-	t_coord 			pos;
-	
+	t_coord				c1;
+	t_coord				c2;
+	t_coord				c3;
+	t_coord				c4;
+	t_coord				pos;
 	struct s_tetrimino	*prev;
 	struct s_tetrimino	*next;
 }				t_tetri;
@@ -60,7 +51,6 @@ t_tetri			*make_coord(t_tetri *t);
 t_tetri			*make_coord_one(t_tetri *t);
 void			print_all_list(t_tetri *t);
 void			print_list(t_tetri *t);
-
 void			*make_coord_p(t_tetri *t);
 
 #endif
