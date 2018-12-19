@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 15:11:20 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/19 16:50:09 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,54 @@
 **
 ** Mission 1 Placer 1 tériminos dans la map et l'afficher a la bonne taille
 **		besoin de recupere les coordone des 4 block
+** MISSION 2 REFAIRE MISSION 1 AVEC LA NOUVELLE STRUCTURE
+**
+** MISSION 3 BACKTRAKING 2 PIECE L relou et Z relou
 */
 
-char **placeone(char **blockt, char **map, int size)
-{
-	int		i;
-	int		j;
-	char	**newmap;
+/*
+** Mission 3
+** Crée une fonction pour placer retirer
+** si pos.x et pos.y == size ini map size++;
+*/
 
+char **placeone(t_tetri *t, char **map, int size)
+{
+	char	**newmap;
+	int		prob;
+
+	prob = 0;
 	newmap = map;
-	j = 0;
-	while(j != 4)
+	if (newmap[(t->c1.y) - 1][(t->c1.x) - 1] == '.')
 	{
-		i = 0;
-		while (i != 4)
-		{
-			if (blockt[j][i] == '#')
-			{
-				if (newmap[j][i] == '.')
-				{
-					newmap[j][i] = 'A';
-				}
-				else
-				{
-					size++;
-					ft_putstr("recusivité\n");
-					map = ini_map(size, 90);
-					return(placeone(blockt, map, size));
-				}
-			}
-			i++;
-		}
-		j++;
+		newmap[(t->c1.y) - 1][(t->c1.x) - 1] = 'A';
+	}
+	else
+		prob = 1;
+	if (newmap[(t->c2.y) - 1][(t->c2.x) - 1] == '.')
+	{
+		newmap[(t->c2.y) - 1][(t->c2.x) - 1] = 'A';
+	}
+	else
+		prob = 1;
+	if (newmap[(t->c3.y) - 1][(t->c3.x) - 1] == '.')
+	{
+		newmap[(t->c3.y) - 1][(t->c3.x) - 1] = 'A';
+	}
+	else
+		prob = 1;
+	if (newmap[(t->c4.y) - 1][(t->c4.x) - 1] == '.')
+	{
+		newmap[(t->c4.y) - 1][(t->c4.x) - 1] = 'A';
+	}
+	else
+		prob = 1;
+	if (prob == 1)
+	{
+		size++;
+		ft_putstr("recusivité\n");
+		map = ini_map(size, 90);
+		return(placeone(t, map, size));
 	}
 	return (newmap);
 }
@@ -89,3 +105,37 @@ char **placeone(char **blockt, char **map, int size)
 **
 ** OPTI compter le nombre total de block root(nombre de carrer)
 */
+
+// char **placeone_old(char **blockt, char **map, int size)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	**newmap;
+
+// 	newmap = map;
+// 	j = 0;
+// 	while(j != 4)
+// 	{
+// 		i = 0;
+// 		while (i != 4)
+// 		{
+// 			if (blockt[j][i] == '#')
+// 			{
+// 				if (newmap[j][i] == '.')
+// 				{
+// 					newmap[j][i] = 'A';
+// 				}
+// 				else
+// 				{
+// 					size++;
+// 					ft_putstr("recusivité\n");
+// 					map = ini_map(size, 90);
+// 					return(placeone(blockt, map, size));
+// 				}
+// 			}
+// 			i++;
+// 		}
+// 		j++;
+// 	}
+// 	return (newmap);
+// }

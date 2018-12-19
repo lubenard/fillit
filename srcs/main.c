@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:38:15 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 16:48:06 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_params(char argc)
 	return (0);
 }
 
-int		all_error(int argc, char **argv, char **str, t_tetri **block)
+int		all_error(int argc, char **argv, char **str, t_tetri **t)
 {
 	if (check_params(argc))
 		return (usage());
@@ -54,7 +54,7 @@ int		all_error(int argc, char **argv, char **str, t_tetri **block)
 	if (valid_file(*str))
 		return (error());
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if ((*block = parsing(read_file(argv[1]))) == NULL)
+	if ((*t= parsing(read_file(argv[1]))) == NULL)
 		return (error());
 	return (0);
 }
@@ -63,22 +63,20 @@ int		main(int argc, char **argv)
 {
 	char *str;
 	char **map;
-	t_tetri *block;
+	t_tetri *t;
 	int size;
 
 	size = 2;
 	str = NULL;
-	if (all_error(argc, argv, &str, &block))
+	if (all_error(argc, argv, &str, &t))
 		return (-1);
 
 	map = ini_map(size, 90);
 	ft_putstr("La map au départ\n");
 	display_map(map);
-	map = placeone(block->tetrimino, map, size);
+	map = placeone(t, map, size);
 	ft_putstr("La map après\n");
 	display_map(map);
-	ft_putstr("\nDEBUT JIM\n");
-	block = make_coord(block);
-	print_all_list(block);
+	print_all_list(t);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:35:00 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 16:40:49 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct	s_tetrimino
 	struct s_tetrimino	*next;
 }				t_tetri;
 
-char			**placeone(char **block, char **map, int size);
+char			**placeone(t_tetri *t, char **map, int size);
 int				usage(void);
 int				error(void);
 t_tetri			*parsing(char *str);
