@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 16:55:05 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/19 16:59:51 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 ** si pos.x et pos.y == size ini map size++;
 */
 
-char **placeone(t_tetri *t, char **map, int size)
+char	**placeone(t_tetri *t, char **map, int size)
 {
 	char	**newmap;
 	int		prob;
@@ -64,7 +64,7 @@ char **placeone(t_tetri *t, char **map, int size)
 		size++;
 		ft_putstr("recusivité\n");
 		map = ini_map(size, 90);
-		return(placeone(t, map, size));
+		return (placeone(t, map, size));
 	}
 	return (newmap);
 }
