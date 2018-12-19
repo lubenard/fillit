@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 16:47:49 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 14:39:47 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
 			return (-1);
 		optimize_tetri(lkd_list->tetrimino);
-		if (!(new_element = new_tetrimino()))
-			return (-1);
+		make_coord_p(lkd_list);
+		if (++i != '\0')
+		{
+			if (!(new_element = new_tetrimino()))
+				return (-1);
 		lkd_list->next = new_element;
 		lkd_list->next->prev = lkd_list;
 		lkd_list = new_element;
+		}
 	}
 	return (0);
 }

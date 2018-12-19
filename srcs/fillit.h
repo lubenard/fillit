@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/18 18:39:57 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/19 14:35:00 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ t_tetri			*make_coord(t_tetri *t);
 t_tetri			*make_coord_one(t_tetri *t);
 void			print_all_list(t_tetri *t);
 void			print_list(t_tetri *t);
+
+void			*make_coord_p(t_tetri *t);
 
 #endif
