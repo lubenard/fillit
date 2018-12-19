@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 14:39:47 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/19 14:52:51 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 			return (-1);
 		optimize_tetri(lkd_list->tetrimino);
 		make_coord_p(lkd_list);
-		if (++i != '\0')
+		if (str[i - 1] != '\0')
 		{
 			if (!(new_element = new_tetrimino()))
 				return (-1);
