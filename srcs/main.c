@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 16:56:07 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/19 16:57:00 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,10 @@ int		all_error(int argc, char **argv, char **str, t_tetri **t)
 
 int		main(int argc, char **argv)
 {
-<<<<<<< HEAD
 	char *str;
 	char **map;
 	t_tetri *t;
 	int size;
-=======
-	char	*str;
-	char	**map;
-	t_tetri	*block;
-	int		size;
->>>>>>> 192783ace629bdca405fa1078990c5160de20dfa
 
 	size = 2;
 	str = NULL;
@@ -83,14 +76,6 @@ int		main(int argc, char **argv)
 	map = placeone(t, map, size);
 	ft_putstr("La map après\n");
 	display_map(map);
-<<<<<<< HEAD
 	print_all_list(t);
-=======
-	ft_putstr("\nDEBUT JIM\n");
-	/*
-	** block = make_coord_p(block);
-	*/
-	print_all_list(block);
->>>>>>> 192783ace629bdca405fa1078990c5160de20dfa
 	return (0);
 }
