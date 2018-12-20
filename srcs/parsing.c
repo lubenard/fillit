@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 16:38:13 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/20 18:04:24 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ t_tetri		*parsing(char *str)
 	first_element = lkd_list;
 	if (compute(lkd_list, new_element, i, str) == -1)
 		return (NULL);
+	free(str);
 	return (first_element);
 }
