@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:59:51 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/20 17:05:23 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/20 17:35:51 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@ int		place(t_tetri *t, char **map, t_coord pmap)
 
 	k = 0;
 	prob = 0;
-	if (map[t->c[k].y + pmap.y][t->c[k].x + pmap.x] == '.')
-		map[t->c[k].y + pmap.y][t->c[k].x + pmap.x] = t->letter;
-	else
-		prob = 1;
-	if (prob == 1)
+	while (k < 4)
+	{
+		if (map[t->c[k].y + pmap.y][t->c[k].x + pmap.x] == '.')
+		{
+			map[t->c[k].y + pmap.y][t->c[k].x + pmap.x] = t->letter;
+			k++;
+		}
+		else
+			prob = 1;
+	}
+	if (prob == 1 || k != 4)
 		return (-1);
 	return (0);
 }
