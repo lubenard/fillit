@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 17:00:30 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/20 16:39:17 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int		all_error(int argc, char **argv, char **str, t_tetri **t)
 
 int		main(int argc, char **argv)
 {
-	char *str;
-	char **map;
-	t_tetri *t;
-	int size;
+	char	*str;
+	char	**map;
+	t_tetri	*t;
+	int		size;
 
 	size = 2;
 	str = NULL;
