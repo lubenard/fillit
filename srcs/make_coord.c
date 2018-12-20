@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 15:53:40 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/20 17:10:43 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/20 17:44:35 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_tetri		*make_coord_p(t_tetri *t)
 		}
 		j++;
 	}
+	t->pos.x = -1;
+	t->pos.y = -1;
 	if (k == 4)
 		return (t);
 	else

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 16:39:17 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/20 17:45:42 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,21 @@ int		main(int argc, char **argv)
 	char	**map;
 	t_tetri	*t;
 	int		size;
+	t_coord	pmap;
+	int retplace;
 
-	size = 2;
+	pmap.x = 1;
+	pmap.y = 2;
+	size = 4;
 	str = NULL;
 	if (all_error(argc, argv, &str, &t))
 		return (-1);
 	map = ini_map(size, 90);
 	ft_putstr("La map au départ\n");
 	display_map(map);
-	map = placeone(t, map, size);
+	retplace = place(t, map, pmap);
+	ft_putnbr(retplace);
+	ft_putchar('\n');
 	ft_putstr("La map après\n");
 	display_map(map);
 	print_all_list(t);
