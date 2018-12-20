@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 15:17:10 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/20 16:38:13 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ t_tetri		*new_tetrimino(void)
 	list->next = NULL;
 	list->prev = NULL;
 	return (list);
+}
+
+char		putletter(void)
+{
+	static char letter = 'A';
+
+	return (letter++);
 }
 
 int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
@@ -50,6 +57,7 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 			return (-1);
 		optimize_tetri(lkd_list->tetrimino);
 		make_coord_p(lkd_list);
+		lkd_list->letter = putletter();
 		if (str[i - 1] != '\0')
 		{
 			if (!(new_element = new_tetrimino()))

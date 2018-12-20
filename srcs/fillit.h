@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 16:55:17 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/20 16:35:00 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ typedef struct	s_coord
 typedef struct	s_tetrimino
 {
 	char				**tetrimino;
-	t_coord				c1;
-	t_coord				c2;
-	t_coord				c3;
-	t_coord				c4;
+	char				letter;
+	t_coord				c[4];
 	t_coord				pos;
 	struct s_tetrimino	*prev;
 	struct s_tetrimino	*next;
