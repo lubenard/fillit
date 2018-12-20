@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 17:39:03 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/18 19:05:49 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/20 16:59:05 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,29 @@ void	print_list(t_tetri *t)
 	ft_putstr(t->tetrimino[3]);
 	ft_putchar('\n');
 	ft_putstr("Les 4 coordonées\n");
-	ft_putnbr(t->c1.x);
+	ft_putnbr(t->c[0].x);
 	ft_putchar('\t');
-	ft_putnbr(t->c1.y);
+	ft_putnbr(t->c[0].y);
 	ft_putchar('\n');
-	ft_putnbr(t->c2.x);
+	ft_putnbr(t->c[1].x);
 	ft_putchar('\t');
-	ft_putnbr(t->c2.y);
+	ft_putnbr(t->c[1].y);
 	ft_putchar('\n');
-	ft_putnbr(t->c3.x);
+	ft_putnbr(t->c[2].x);
 	ft_putchar('\t');
-	ft_putnbr(t->c3.y);
+	ft_putnbr(t->c[2].y);
 	ft_putchar('\n');
-	ft_putnbr(t->c4.x);
+	ft_putnbr(t->c[3].x);
 	ft_putchar('\t');
-	ft_putnbr(t->c4.y);
+	ft_putnbr(t->c[3].y);
 	ft_putchar('\n');
 	ft_putstr("La position\n");
 	ft_putnbr(t->pos.x);
 	ft_putchar('\t');
 	ft_putnbr(t->pos.y);
+	ft_putchar('\n');
+	ft_putstr("La lettre\n");
+	ft_putnbr(t->letter);
 	ft_putchar('\n');
 }
 

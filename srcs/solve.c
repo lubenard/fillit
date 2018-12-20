@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 16:59:51 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/20 16:55:58 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,20 @@ char	**placeone(t_tetri *t, char **map, int size)
 
 	prob = 0;
 	newmap = map;
-	if (newmap[(t->c1.y) - 1][(t->c1.x) - 1] == '.')
-	{
-		newmap[(t->c1.y) - 1][(t->c1.x) - 1] = 'A';
-	}
+	if (newmap[(t->c[0].y)][(t->c[0].x)] == '.')
+		newmap[(t->c[0].y)][(t->c[0].x)] = 'A';
 	else
 		prob = 1;
-	if (newmap[(t->c2.y) - 1][(t->c2.x) - 1] == '.')
-	{
-		newmap[(t->c2.y) - 1][(t->c2.x) - 1] = 'A';
-	}
+	if (newmap[(t->c[1].y)][(t->c[1].x)] == '.')
+		newmap[(t->c[1].y)][(t->c[1].x)] = 'A';
 	else
 		prob = 1;
-	if (newmap[(t->c3.y) - 1][(t->c3.x) - 1] == '.')
-	{
-		newmap[(t->c3.y) - 1][(t->c3.x) - 1] = 'A';
-	}
+	if (newmap[(t->c[2].y)][(t->c[2].x)] == '.')
+		newmap[(t->c[2].y)][(t->c[2].x)] = 'A';
 	else
 		prob = 1;
-	if (newmap[(t->c4.y) - 1][(t->c4.x) - 1] == '.')
-	{
-		newmap[(t->c4.y) - 1][(t->c4.x) - 1] = 'A';
-	}
+	if (newmap[(t->c[3].y)][(t->c[3].x)] == '.')
+		newmap[(t->c[3].y)][(t->c[3].x)] = 'A';
 	else
 		prob = 1;
 	if (prob == 1)
