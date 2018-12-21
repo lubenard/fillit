@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:01:25 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/18 16:48:22 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/21 10:08:02 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,13 @@ int		valid_file(char *str)
 	if (check_char_line(str))
 	{
 		ft_putstr("Prob char ou trop de ligne\n");
+		ft_strdel(&str);
 		return (-1);
 	}
 	if (check4x4(str))
 	{
 		ft_putstr("C'est des carré de 4x4 avec des retour a la ligne\n");
+		ft_strdel(&str);
 		return (-1);
 	}
 	return (0);

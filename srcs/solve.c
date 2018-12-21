@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 16:55:58 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 15:24:55 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,9 @@
 ** si pos.x et pos.y == size ini map size++;
 */
 
-char	**placeone(t_tetri *t, char **map, int size)
+void	solve(t_tetri *t, char **map, int size)
 {
-	char	**newmap;
-	int		prob;
-
-	prob = 0;
-	newmap = map;
-	if (newmap[(t->c[0].y)][(t->c[0].x)] == '.')
-		newmap[(t->c[0].y)][(t->c[0].x)] = 'A';
-	else
-		prob = 1;
-	if (newmap[(t->c[1].y)][(t->c[1].x)] == '.')
-		newmap[(t->c[1].y)][(t->c[1].x)] = 'A';
-	else
-		prob = 1;
-	if (newmap[(t->c[2].y)][(t->c[2].x)] == '.')
-		newmap[(t->c[2].y)][(t->c[2].x)] = 'A';
-	else
-		prob = 1;
-	if (newmap[(t->c[3].y)][(t->c[3].x)] == '.')
-		newmap[(t->c[3].y)][(t->c[3].x)] = 'A';
-	else
-		prob = 1;
-	if (prob == 1)
-	{
-		size++;
-		ft_putstr("recusivité\n");
-		map = ini_map(size, 90);
-		return (placeone(t, map, size));
-	}
-	return (newmap);
+	
 }
 
 /*
@@ -98,36 +70,35 @@ char	**placeone(t_tetri *t, char **map, int size)
 ** OPTI compter le nombre total de block root(nombre de carrer)
 */
 
-// char **placeone_old(char **blockt, char **map, int size)
+// char	**placeone(t_tetri *t, char **map, int size)
 // {
-// 	int		i;
-// 	int		j;
 // 	char	**newmap;
+// 	int		prob;
 
+// 	prob = 0;
 // 	newmap = map;
-// 	j = 0;
-// 	while(j != 4)
+// 	if (newmap[(t->c[0].y)][(t->c[0].x)] == '.')
+// 		newmap[(t->c[0].y)][(t->c[0].x)] = 'A';
+// 	else
+// 		prob = 1;
+// 	if (newmap[(t->c[1].y)][(t->c[1].x)] == '.')
+// 		newmap[(t->c[1].y)][(t->c[1].x)] = 'A';
+// 	else
+// 		prob = 1;
+// 	if (newmap[(t->c[2].y)][(t->c[2].x)] == '.')
+// 		newmap[(t->c[2].y)][(t->c[2].x)] = 'A';
+// 	else
+// 		prob = 1;
+// 	if (newmap[(t->c[3].y)][(t->c[3].x)] == '.')
+// 		newmap[(t->c[3].y)][(t->c[3].x)] = 'A';
+// 	else
+// 		prob = 1;
+// 	if (prob == 1)
 // 	{
-// 		i = 0;
-// 		while (i != 4)
-// 		{
-// 			if (blockt[j][i] == '#')
-// 			{
-// 				if (newmap[j][i] == '.')
-// 				{
-// 					newmap[j][i] = 'A';
-// 				}
-// 				else
-// 				{
-// 					size++;
-// 					ft_putstr("recusivité\n");
-// 					map = ini_map(size, 90);
-// 					return(placeone(blockt, map, size));
-// 				}
-// 			}
-// 			i++;
-// 		}
-// 		j++;
+// 		size++;
+// 		ft_putstr("recusivité\n");
+// 		map = ini_map(size, 90);
+// 		return (placeone(t, map, size));
 // 	}
 // 	return (newmap);
 // }

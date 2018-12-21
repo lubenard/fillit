@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 18:04:24 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/21 14:39:47 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_tetri		*new_tetrimino(void)
 {
 	t_tetri		*list;
 
-	if (!(list = (t_tetri *)malloc(sizeof(*list))))
+	if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
 		return (0);
-	if (!(list->tetrimino = malloc(sizeof(char) * 4)) || \
-		!(list->tetrimino[0] = malloc(sizeof(char) * 4)) || \
-		!(list->tetrimino[1] = malloc(sizeof(char) * 4)) || \
-		!(list->tetrimino[2] = malloc(sizeof(char) * 4)) || \
-		!(list->tetrimino[3] = malloc(sizeof(char) * 4)))
+	if (!(list->tetrimino = (char **)malloc(sizeof(char) * 4)) || \
+		!(list->tetrimino[0] = (char *)malloc(sizeof(char) * 4)) || \
+		!(list->tetrimino[1] = (char *)malloc(sizeof(char) * 4)) || \
+		!(list->tetrimino[2] = (char *)malloc(sizeof(char) * 4)) || \
+		!(list->tetrimino[3] = (char *)malloc(sizeof(char) * 4)))
 		return (NULL);
 	list->next = NULL;
 	list->prev = NULL;
@@ -38,18 +38,32 @@ char		putletter(void)
 
 int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 {
+	char *test;
+
 	while (str[i])
 	{
-		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
+
+		test = ft_strsub(str, i, 4);
+		lkd_list->tetrimino[0] = test; //ft_strsub(str, i, 4);
+		//ft_strdel(&test);
 		while (str[i] != '\n')
 			i++;
-		lkd_list->tetrimino[1] = ft_strsub(str, ++i, 4);
+		
+		test = ft_strsub(str, ++i, 4);
+		lkd_list->tetrimino[1] = test; //ft_strsub(str, ++i, 4);
+		//ft_strdel(&test);
 		while (str[i] != '\n')
 			i++;
-		lkd_list->tetrimino[2] = ft_strsub(str, ++i, 4);
+		
+		test = ft_strsub(str, ++i, 4);
+		lkd_list->tetrimino[2] = test; //ft_strsub(str, ++i, 4);
+		//ft_strdel(&test);
 		while (str[i] != '\n')
 			i++;
-		lkd_list->tetrimino[3] = ft_strsub(str, ++i, 4);
+		
+		test = ft_strsub(str, ++i, 4);
+		lkd_list->tetrimino[3] = test; //ft_strsub(str, ++i, 4);
+		//ft_strdel(&test);
 		while (str[i] != '\n')
 			i++;
 		i += 2;
@@ -83,7 +97,14 @@ t_tetri		*parsing(char *str)
 		return (NULL);
 	first_element = lkd_list;
 	if (compute(lkd_list, new_element, i, str) == -1)
+	{
+		while (lkd_list->next != NULL)
+		{
+			lkd_list = lkd_list->next;
+			free(lkd_list);
+		}
 		return (NULL);
-	free(str);
+	}
+	ft_strdel(&str);
 	return (first_element);
 }
