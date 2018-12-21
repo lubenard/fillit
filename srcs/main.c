@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 17:45:42 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 14:51:21 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ int		main(int argc, char **argv)
 	int		size;
 	t_coord	pmap;
 	int retplace;
+	int retremove;
 
 	pmap.x = 1;
-	pmap.y = 2;
+	pmap.y = 1;
 	size = 4;
 	str = NULL;
 	if (all_error(argc, argv, &str, &t))
@@ -78,7 +79,14 @@ int		main(int argc, char **argv)
 	ft_putstr("La map au départ\n");
 	display_map(map);
 	retplace = place(t, map, pmap);
+	ft_putstr("Retplace = ");
 	ft_putnbr(retplace);
+	ft_putchar('\n');
+	ft_putstr("La map après\n");
+	display_map(map);
+	retremove = remove_p(t, map);
+	ft_putstr("Retremove = ");
+	ft_putnbr(retremove);
 	ft_putchar('\n');
 	ft_putstr("La map après\n");
 	display_map(map);

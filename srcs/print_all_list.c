@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 17:39:03 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/20 17:18:05 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 14:49:38 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	print_list(t_tetri *t)
 		ft_putstr("\nLAST TETRIMINOS\n");
 	else
 		ft_putstr("\nNEW NEW TETRIMINOS\n");
+	ft_putstr("La lettre\n");
+	ft_putchar(t->letter);
+	ft_putchar('\n');
 	ft_putstr("Le Char **:\n");
 	ft_putstr(t->tetrimino[0]);
 	ft_putchar('\n');
@@ -48,9 +51,6 @@ void	print_list(t_tetri *t)
 	ft_putnbr(t->pos.x);
 	ft_putchar('\t');
 	ft_putnbr(t->pos.y);
-	ft_putchar('\n');
-	ft_putstr("La lettre\n");
-	ft_putchar(t->letter);
 	ft_putchar('\n');
 }
 
