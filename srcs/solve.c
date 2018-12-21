@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/21 15:24:55 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 19:12:10 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,76 @@
 ** si pos.x et pos.y == size ini map size++;
 */
 
-void	solve(t_tetri *t, char **map, int size)
+char	**solve(t_tetri *t)
 {
-	
+	char	**map;
+	int		size;
+	t_coord	pmap;
+
+	size = 2;
+	map = ini_map(size, 90); // free map ou leaks
+	ici:
+	while (1)
+	{
+		if (t->pos.y == -1)
+			pmap.y = 0; // 0 si pos = -1 sinon recuperer pos je supose
+		else
+		{
+			pmap.y = t->pos.y;
+		}
+		while (pmap.y != size)
+		{
+			if (t->pos.x == -1)
+				pmap.x = 0;
+			else
+			{
+				pmap.x = t->pos.x + 1;
+				t->pos.x = -1;
+			}
+			while (pmap.x != size)
+			{
+				if (!(place(t, map, pmap)))
+				{
+					if (t->next == NULL)
+						return (map);
+					else
+					{
+						t = t->next;
+						goto ici;
+					}
+				}
+				pmap.x++;
+			}
+			pmap.x = -1;
+			pmap.y++;
+		}
+		if (t->letter == 'A' && t->prev == NULL)
+		{
+			if (remove_end(t, map))
+				ft_putstr("La pièce 'A' n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+			t->pos.y = -1; // mettre dans remove_end meme  si erreur
+			t->pos.x = -1;
+			map = ini_map(++size, 90); // free map ou leaks
+			continue ;
+		}
+		else if (t->letter != 'A' && t->prev != NULL)
+		{
+			
+			if (remove_end(t, map))
+					ft_putstr("La pièce a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+			t->pos.y = -1; // mettre dans remove_end meme  si erreur
+			t->pos.x = -1;
+			t = t->prev;
+			if (remove_p(t, map))
+					ft_putstr("La pièce PRECEDENTE n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+
+		}
+		else 
+			ft_putstr("Wtf\n");
+		ft_putstr("while(1)\n");
+	}
+	ft_putstr("Fin de solve anormal\n");
+	return(map);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/21 14:46:16 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 18:30:39 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ typedef struct	s_tetrimino
 	struct s_tetrimino	*next;
 }				t_tetri;
 
-char			**placeone(t_tetri *t, char **map, int size);
 /*
+**char			**placeone(t_tetri *t, char **map, int size);
 **test d'algo a enlever dans version non final
 */
+char			**solve(t_tetri *t);
 int				remove_p(t_tetri *t, char **map);
+int				remove_end(t_tetri *t, char **map);
 int				place(t_tetri *t, char **map, t_coord pmap);
 int				placebrut(t_tetri *t, char **map, t_coord pmap);
 int				canplace(t_tetri *t, char **map, t_coord pmap);

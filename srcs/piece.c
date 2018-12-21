@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:59:51 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/21 14:48:20 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 18:47:13 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		place(t_tetri *t, char **map, t_coord pmap)
 	return (0);
 }
 
-int		remove_p(t_tetri *t, char **map)
+int		remove_end(t_tetri *t, char **map)
 {
 	int		k;
 
@@ -76,5 +76,21 @@ int		remove_p(t_tetri *t, char **map)
 	}
 	t->pos.x = -1;
 	t->pos.y = -1;
+	return (0);
+}
+
+int		remove_p(t_tetri *t, char **map)
+{
+	int		k;
+
+	k = 0;
+	if (t->pos.x < 0 || t->pos.y < 0)
+		return (-1);
+	while (k < 4)
+	{
+		if (map[t->c[k].y + t->pos.y][t->c[k].x + t->pos.x] == t->letter)
+			map[t->c[k].y + t->pos.y][t->c[k].x + t->pos.x] = '.';
+		k++;
+	}
 	return (0);
 }
