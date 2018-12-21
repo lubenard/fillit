@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/20 17:45:42 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/21 14:26:21 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ char	*read_file(char *arg)
 	ft_bzero(str, BUFF + 1);
 	if ((fd = open(arg, O_RDONLY)) == -1)
 	{
-		ft_putstr("open fail\n");
+		//ft_strdel(&str);
 		return (NULL);
 	}
 	if (read(fd, str, BUFF) < 0)
 	{
-		printf("Erreur de lecture\n");
+		//ft_strdel(&str);
 		return (NULL);
 	}
 	if (close(fd) == -1)
 	{
-		ft_putstr("Close Fail.\n");
+		//ft_strdel(&str);
 		return (NULL);
 	}
 	return (str);
@@ -47,15 +47,28 @@ int		check_params(char argc)
 
 int		all_error(int argc, char **argv, char **str, t_tetri **t)
 {
-	if (check_params(argc))
+	if (check_params(argc) == -1)
 		return (usage());
 	if (!(*str = read_file(argv[1])))
+	{
+		//ft_strdel(str);
+		printf("Return error read_file\n");
 		return (error());
-	if (valid_file(*str))
+	}
+	if (valid_file(*str) == -1)
+	{
+		printf("return error valid file\n");
+		//ft_strdel(str);
 		return (error());
+	}
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if ((*t = parsing(read_file(argv[1]))) == NULL)
+	if ((*t = parsing(*str)) == NULL)
+	{
+		printf("Parsing ????\n");
+		//ft_strdel(str);
 		return (error());
+	}
+	//ft_strdel(str);
 	return (0);
 }
 
@@ -66,11 +79,11 @@ int		main(int argc, char **argv)
 	t_tetri	*t;
 	int		size;
 	t_coord	pmap;
-	int retplace;
+	int		retplace;
 
-	pmap.x = 1;
-	pmap.y = 2;
-	size = 4;
+	pmap.x = 0;
+	pmap.y = 0;
+	size = 5;
 	str = NULL;
 	if (all_error(argc, argv, &str, &t))
 		return (-1);
