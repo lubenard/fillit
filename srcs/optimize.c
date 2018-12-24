@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 13:23:35 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 15:39:07 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/22 08:46:00 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,11 @@ int		optimize_tetri(char **str)
 	int e;
 	int empty_line_hor;
 	int empty_line_ver;
-	int nbr_pts_hor;
 
 	i = 0;
 	e = 0;
 	empty_line_hor = 0;
 	empty_line_ver = 0;
-	nbr_pts_hor = 0;
 	empty_line_hor = detect_empty_line_hor(str, i, e);
 	empty_line_ver = detect_empty_line_ver(str, i, e);
 	while (empty_line_ver != 0)

@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/21 14:39:47 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/24 13:38:29 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 
 	while (str[i])
 	{
-
 		test = ft_strsub(str, i, 4);
 		lkd_list->tetrimino[0] = test; //ft_strsub(str, i, 4);
 		//ft_strdel(&test);
@@ -100,6 +99,11 @@ t_tetri		*parsing(char *str)
 	{
 		while (lkd_list->next != NULL)
 		{
+			free(lkd_list->tetrimino[0]);
+			free(lkd_list->tetrimino[1]);
+			free(lkd_list->tetrimino[2]);
+			free(lkd_list->tetrimino[3]);
+			free(lkd_list->tetrimino);
 			lkd_list = lkd_list->next;
 			free(lkd_list);
 		}

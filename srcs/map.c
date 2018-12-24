@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/19 15:28:27 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/22 10:40:54 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	display_map(char **map)
 
 	y = 0;
 	x = 0;
-	while (map[y][x] != '\0')
+	while (map[y][0] != '\0')
 	{
 		while (map[y][x] != '\0')
 		{
@@ -72,4 +72,11 @@ void	display_map(char **map)
 		y++;
 		x = 0;
 	}
+	y = 0;
+	while (map[y][0])
+	{
+		printf("Just freed map[%d]\n", y);
+		ft_strdel(&map[y++]);
+	}
+	ft_strdel(map);
 }

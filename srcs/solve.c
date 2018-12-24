@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/21 19:12:10 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/22 16:17:53 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ char	**solve(t_tetri *t)
 		}
 		if (t->letter == 'A' && t->prev == NULL)
 		{
-			if (remove_end(t, map))
-				ft_putstr("La pièce 'A' n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+			//if (remove_end(t, map))
+			//	ft_putstr("La pièce 'A' n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			map = ini_map(++size, 90); // free map ou leaks
@@ -83,18 +83,18 @@ char	**solve(t_tetri *t)
 		else if (t->letter != 'A' && t->prev != NULL)
 		{
 			
-			if (remove_end(t, map))
-					ft_putstr("La pièce a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+			//if (remove_end(t, map))
+			//		ft_putstr("La pièce a pas pu être retirer dans SOLVE Elle a pas été placer\n");
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			t = t->prev;
-			if (remove_p(t, map))
-					ft_putstr("La pièce PRECEDENTE n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
+			//if (remove_p(t, map))
+			//		ft_putstr("La pièce PRECEDENTE n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
 
 		}
 		else 
 			ft_putstr("Wtf\n");
-		ft_putstr("while(1)\n");
+		//ft_putstr("while(1)\n");
 	}
 	ft_putstr("Fin de solve anormal\n");
 	return(map);

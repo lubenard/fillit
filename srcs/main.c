@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/21 18:43:31 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/24 13:13:52 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ char	*read_file(char *arg)
 	char	*str;
 	int		fd;
 
-	if (!(str = (char *)malloc(sizeof(char) * BUFF + 1)))
+	if (!(str = (char *)malloc(sizeof(char) * BUFF)))
 		return (NULL);
-	ft_bzero(str, BUFF + 1);
+	ft_bzero(str, BUFF);
 	if ((fd = open(arg, O_RDONLY)) == -1)
 	{
-		//ft_strdel(&str);
+		ft_strdel(&str);
 		return (NULL);
 	}
 	if (read(fd, str, BUFF) < 0)
 	{
-		//ft_strdel(&str);
+		ft_strdel(&str);
 		return (NULL);
 	}
 	if (close(fd) == -1)
 	{
-		//ft_strdel(&str);
+		ft_strdel(&str);
 		return (NULL);
 	}
 	return (str);
@@ -51,24 +51,22 @@ int		all_error(int argc, char **argv, char **str, t_tetri **t)
 		return (usage());
 	if (!(*str = read_file(argv[1])))
 	{
-		//ft_strdel(str);
 		printf("Return error read_file\n");
 		return (error());
 	}
 	if (valid_file(*str) == -1)
 	{
 		printf("return error valid file\n");
-		//ft_strdel(str);
+		ft_strdel(str);
 		return (error());
 	}
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
 	if ((*t = parsing(*str)) == NULL)
 	{
 		printf("Parsing ????\n");
-		//ft_strdel(str);
+		ft_strdel(str);
 		return (error());
 	}
-	//ft_strdel(str);
 	return (0);
 }
 
