@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/22 09:49:10 by lubenard         ###   ########.fr        #
+#    Updated: 2018/12/24 20:47:08 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,14 @@ all:  $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft && make
-	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
+	@clang -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 	@echo fillit ${GREEN_OK}
 
 %.o : %.c
-	@$(CC) -c $(CFLAGS) $< -o $@
+	@clang -c $(CFLAGS) $< -o $@
 
 onlyfillit:
-	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
+	@clang -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
 	@echo onlyfillit ${GREEN_OK}
 
 clean:
@@ -60,4 +60,4 @@ mclean: all clean
 cleanexe:
 	@rm -f $(NAME)
 
-re: fclean all
+re: fcleanall
