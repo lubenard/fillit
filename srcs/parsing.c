@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/26 14:46:38 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/28 11:19:53 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,15 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 			i++;
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
+		{
+			free(lkd_list->tetrimino[0]);
+			free(lkd_list->tetrimino[1]);
+			free(lkd_list->tetrimino[2]);
+			free(lkd_list->tetrimino[3]);
+			lkd_list->prev->next = NULL;
+			//free(lkd_list);    //essayer de faire marcher ca
 			return (-1);
+		}
 		optimize_tetri(lkd_list->tetrimino);
 		make_coord_p(lkd_list);
 		lkd_list->letter = putletter();
@@ -99,17 +107,17 @@ t_tetri		*parsing(char *str)
 	{
 		while (lkd_list->next != NULL)
 		{
-			printf("%c\n", lkd_list->letter);
-			printf("Free de lkd_list->tetrimino[0] = %s\n", lkd_list->tetrimino[0]);
-			//free(lkd_list->tetrimino[0]); //erreur de double free
-			//free(lkd_list->tetrimino[1]); //same
-			//free(lkd_list->tetrimino[2]); //same
-			//free(lkd_list->tetrimino[3]); //same
-			//free(lkd_list->tetrimino);    //pas d'erreurs quand seulement lui est decommente, mais leaks
-			//free(lkd_list->prev);
+			printf("AVANT\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
+			//free(lkd_list->tetrimino[0]); //erreur de double free, but WTF
+			free(lkd_list->tetrimino[1]);
+			free(lkd_list->tetrimino[2]);
+			free(lkd_list->tetrimino[3]);
+			//free(lkd_list->tetrimino);    //Erreurs de invalid next size
+			//free(first_element->prev);
+			printf("APRES\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
 			lkd_list = lkd_list->next;
-			//free(lkd_list->prev->prev);
-			//free(lkd_list);             //erreur de invalid pointer
+			//free(first_element->prev->prev); error
+			//free(lkd_list);             //erreur de double free or corruption
 		}
 		return (NULL);
 	}
