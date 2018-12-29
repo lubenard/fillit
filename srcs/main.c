@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/29 09:57:27 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/29 10:01:20 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_params(char argc)
 	return (0);
 }
 
-int		all_error(int argc, char **argv, char *str, t_tetri *t)
+int		all_error(int argc, char **argv, char *str, t_tetri **t)
 {
 	if (check_params(argc) == -1)
 		return (usage());
@@ -61,7 +61,7 @@ int		all_error(int argc, char **argv, char *str, t_tetri *t)
 		return (error());
 	}
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if ((t = parsing(str)) == NULL)
+	if ((*t = parsing(str)) == NULL)
 	{
 		printf("Parsing ????\n");
 		ft_strdel(&str);
@@ -84,8 +84,7 @@ int		main(int argc, char **argv)
 	// pmap.y = 1;
 	// size = 4;
 	str = NULL;
-	t = NULL;
-	if (all_error(argc, argv, str, t))
+	if (all_error(argc, argv, str, &t))
 		return (-1);
 	map = solve(t);
 	// map = ini_map(size, 90);
