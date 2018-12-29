@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/29 09:49:48 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/29 09:57:27 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		main(int argc, char **argv)
 	// pmap.y = 1;
 	// size = 4;
 	str = NULL;
+	t = NULL;
 	if (all_error(argc, argv, str, t))
 		return (-1);
 	map = solve(t);
