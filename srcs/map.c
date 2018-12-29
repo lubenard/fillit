@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/22 10:40:54 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/29 09:39:31 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ char	**ini_map(int size, int max)
 	char	**map;
 
 	y = 0;
-	if (!(map = (char **)malloc(sizeof(char *) * max + 1)))
+	if (!(map = (char **)malloc(sizeof(char *) * max)))
 		return (NULL);
 	while (y < max)
 	{
+		printf("malloc map = %d/%d\n", y, max);
 		if (!(map[y] = (char *)malloc(sizeof(char) * max + 1)))
 			return (NULL);
 		x = 0;
@@ -73,10 +74,12 @@ void	display_map(char **map)
 		x = 0;
 	}
 	y = 0;
-	while (map[y][0])
+	while (y < 91)
 	{
-		printf("Just freed map[%d]\n", y);
-		ft_strdel(&map[y++]);
+		printf("AVANT:  Just freed map[%d] == %s\n", y, map[y]);
+		free(map[y]);
+		printf("APRES:  Just freed map[%d] == %s\n", y, map[y]);
+		y++;
 	}
-	ft_strdel(map);
+	free(map);
 }

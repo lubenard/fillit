@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/28 11:19:53 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/29 09:32:41 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ t_tetri		*new_tetrimino(void)
 
 	if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
 		return (0);
-	if (!(list->tetrimino = (char **)malloc(sizeof(char) * 5)) || \
-		!(list->tetrimino[0] = (char *)malloc(sizeof(char) * 5)) || \
-		!(list->tetrimino[1] = (char *)malloc(sizeof(char) * 5)) || \
-		!(list->tetrimino[2] = (char *)malloc(sizeof(char) * 5)) || \
-		!(list->tetrimino[3] = (char *)malloc(sizeof(char) * 5)))
+	if (!(list->tetrimino = (char **)malloc(sizeof(char *) * 4)))
 		return (NULL);
 	list->next = NULL;
 	list->prev = NULL;
@@ -38,31 +34,18 @@ char		putletter(void)
 
 int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 {
-	char *test;
-
 	while (str[i])
 	{
-		test = ft_strsub(str, i, 4);
-		ft_strcpy(lkd_list->tetrimino[0], test);
-		ft_strdel(&test);
+		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
 		while (str[i] != '\n')
 			i++;
-		
-		test = ft_strsub(str, ++i, 4);
-		ft_strcpy(lkd_list->tetrimino[1], test);
-		ft_strdel(&test);
+		lkd_list->tetrimino[1] = ft_strsub(str, ++i, 4);
 		while (str[i] != '\n')
 			i++;
-		
-		test = ft_strsub(str, ++i, 4);
-		ft_strcpy(lkd_list->tetrimino[2], test);
-		ft_strdel(&test);
+		lkd_list->tetrimino[2] = ft_strsub(str, ++i, 4);
 		while (str[i] != '\n')
 			i++;
-		
-		test = ft_strsub(str, ++i, 4);
-		ft_strcpy(lkd_list->tetrimino[3], test);
-		ft_strdel(&test);
+		lkd_list->tetrimino[3] = ft_strsub(str, ++i, 4);
 		while (str[i] != '\n')
 			i++;
 		i += 2;
@@ -73,7 +56,7 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 			free(lkd_list->tetrimino[2]);
 			free(lkd_list->tetrimino[3]);
 			lkd_list->prev->next = NULL;
-			//free(lkd_list);    //essayer de faire marcher ca
+			free(lkd_list);
 			return (-1);
 		}
 		optimize_tetri(lkd_list->tetrimino);
@@ -107,16 +90,15 @@ t_tetri		*parsing(char *str)
 	{
 		while (lkd_list->next != NULL)
 		{
-			printf("AVANT\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
-			//free(lkd_list->tetrimino[0]); //erreur de double free, but WTF
+			//printf("AVANT\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
+			free(lkd_list->tetrimino[0]);
 			free(lkd_list->tetrimino[1]);
 			free(lkd_list->tetrimino[2]);
 			free(lkd_list->tetrimino[3]);
-			//free(lkd_list->tetrimino);    //Erreurs de invalid next size
-			//free(first_element->prev);
-			printf("APRES\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
+			free(lkd_list->tetrimino);
+			//printf("APRES\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
 			lkd_list = lkd_list->next;
-			//free(first_element->prev->prev); error
+			//free(first_element->prev->prev); //error
 			//free(lkd_list);             //erreur de double free or corruption
 		}
 		return (NULL);

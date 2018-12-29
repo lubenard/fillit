@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:59:51 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/21 18:47:13 by jmoussu          ###   ########.fr       */
+/*   Updated: 2018/12/29 08:54:43 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int		canplace(t_tetri *t, char **map, t_coord pmap)
 	while (k < 4)
 	{
 		if (map[t->c[k].y + pmap.y][t->c[k].x + pmap.x] == '.')
-		{
 			k++;
-		}
 		else
 		{
 			k++;

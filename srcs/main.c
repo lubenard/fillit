@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/24 13:13:52 by lubenard         ###   ########.fr       */
+/*   Updated: 2018/12/29 09:49:48 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,26 @@ int		check_params(char argc)
 	return (0);
 }
 
-int		all_error(int argc, char **argv, char **str, t_tetri **t)
+int		all_error(int argc, char **argv, char *str, t_tetri *t)
 {
 	if (check_params(argc) == -1)
 		return (usage());
-	if (!(*str = read_file(argv[1])))
+	if (!(str = read_file(argv[1])))
 	{
 		printf("Return error read_file\n");
 		return (error());
 	}
-	if (valid_file(*str) == -1)
+	if (valid_file(str) == -1)
 	{
 		printf("return error valid file\n");
-		ft_strdel(str);
+		ft_strdel(&str);
 		return (error());
 	}
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
-	if ((*t = parsing(*str)) == NULL)
+	if ((t = parsing(str)) == NULL)
 	{
 		printf("Parsing ????\n");
-		ft_strdel(str);
+		ft_strdel(&str);
 		return (error());
 	}
 	return (0);
@@ -84,7 +84,7 @@ int		main(int argc, char **argv)
 	// pmap.y = 1;
 	// size = 4;
 	str = NULL;
-	if (all_error(argc, argv, &str, &t))
+	if (all_error(argc, argv, str, t))
 		return (-1);
 	map = solve(t);
 	// map = ini_map(size, 90);
