@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/02 15:12:32 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/02 18:26:44 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,12 @@ void	display_map(char **map)
 		x = 0;
 	}
 	y = 0;
-	while (y < 91)
-		free(map[y++]); //Ne free rien, jsp pq... Résoudrait 80% des leaks
+	while (y < 20)
+	{
+		//printf("AVANT: map[%d] = %s\n",y ,map[y]);
+		free(map[y]); //Ne free rien, jsp pq... Résoudrait 80% des leaks
+		//printf("APRES: map[%d] = %s\n", y, map[y]);
+		y++;
+	}
 	free(map);
 }

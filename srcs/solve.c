@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/02 15:14:12 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/02 18:20:56 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,14 @@ char	**solve(t_tetri *t)
 	t_coord	pmap;
 
 	size = 2;
-	map = ini_map(size, 90); // free map ou leaks
+	map = ini_map(size, 20); // free map ou leaks
 	ici:
 	while (1)
 	{
 		if (t->pos.y == -1)
 			pmap.y = 0; // 0 si pos = -1 sinon recuperer pos je supose
 		else
-		{
 			pmap.y = t->pos.y;
-		}
 		while (pmap.y != size)
 		{
 			if (t->pos.x == -1)
@@ -83,7 +81,7 @@ char	**solve(t_tetri *t)
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			t = t->prev;
-	}
+		}
 		else
 			ft_putstr("Wtf\n");
 	}
