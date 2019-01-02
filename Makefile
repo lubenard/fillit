@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2018/12/24 20:47:08 by lubenard         ###   ########.fr        #
+#    Updated: 2019/01/02 12:35:53 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -r *.dSYM
 	@cd libft && rm -f libft.a
 	@echo fclean fillit ${GREEN_OK}
 
