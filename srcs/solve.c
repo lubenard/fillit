@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/22 16:17:53 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/02 13:55:51 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ char	**solve(t_tetri *t)
 		}
 		if (t->letter == 'A' && t->prev == NULL)
 		{
-			//if (remove_end(t, map))
-			//	ft_putstr("La pièce 'A' n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			map = ini_map(++size, 90); // free map ou leaks
@@ -82,19 +80,12 @@ char	**solve(t_tetri *t)
 		}
 		else if (t->letter != 'A' && t->prev != NULL)
 		{
-			
-			//if (remove_end(t, map))
-			//		ft_putstr("La pièce a pas pu être retirer dans SOLVE Elle a pas été placer\n");
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			t = t->prev;
-			//if (remove_p(t, map))
-			//		ft_putstr("La pièce PRECEDENTE n'a pas pu être retirer dans SOLVE Elle a pas été placer\n");
-
 		}
 		else 
 			ft_putstr("Wtf\n");
-		//ft_putstr("while(1)\n");
 	}
 	ft_putstr("Fin de solve anormal\n");
 	return(map);
@@ -136,36 +127,3 @@ char	**solve(t_tetri *t)
 **
 ** OPTI compter le nombre total de block root(nombre de carrer)
 */
-
-// char	**placeone(t_tetri *t, char **map, int size)
-// {
-// 	char	**newmap;
-// 	int		prob;
-
-// 	prob = 0;
-// 	newmap = map;
-// 	if (newmap[(t->c[0].y)][(t->c[0].x)] == '.')
-// 		newmap[(t->c[0].y)][(t->c[0].x)] = 'A';
-// 	else
-// 		prob = 1;
-// 	if (newmap[(t->c[1].y)][(t->c[1].x)] == '.')
-// 		newmap[(t->c[1].y)][(t->c[1].x)] = 'A';
-// 	else
-// 		prob = 1;
-// 	if (newmap[(t->c[2].y)][(t->c[2].x)] == '.')
-// 		newmap[(t->c[2].y)][(t->c[2].x)] = 'A';
-// 	else
-// 		prob = 1;
-// 	if (newmap[(t->c[3].y)][(t->c[3].x)] == '.')
-// 		newmap[(t->c[3].y)][(t->c[3].x)] = 'A';
-// 	else
-// 		prob = 1;
-// 	if (prob == 1)
-// 	{
-// 		size++;
-// 		ft_putstr("recusivité\n");
-// 		map = ini_map(size, 90);
-// 		return (placeone(t, map, size));
-// 	}
-// 	return (newmap);
-// }
