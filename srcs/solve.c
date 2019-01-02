@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/02 13:55:51 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/02 15:14:12 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ char	**solve(t_tetri *t)
 			t->pos.y = -1; // mettre dans remove_end meme  si erreur
 			t->pos.x = -1;
 			t = t->prev;
-		}
-		else 
+	}
+		else
 			ft_putstr("Wtf\n");
 	}
 	ft_putstr("Fin de solve anormal\n");
-	return(map);
+	return (map);
 }
 
 /*

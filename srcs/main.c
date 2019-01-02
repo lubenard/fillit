@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/02 12:58:11 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/02 14:41:25 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		all_error(int argc, char **argv, char *str, t_tetri **t)
 	if (valid_file(str) == -1)
 	{
 		printf("return error valid file\n");
+		return (error());
 	}
 	ft_putstr("LE FICHIER EST VALIDE \nBIEN JOUE \n");
 	if ((*t = parsing(str)) == NULL)
@@ -73,33 +74,11 @@ int		main(int argc, char **argv)
 	char	*str;
 	char	**map;
 	t_tetri	*t;
-	// int		size;
-	// t_coord	pmap;
-	// int retplace;
-	// int retremove;
 
-	// pmap.x = 1;
-	// pmap.y = 1;
-	// size = 4;
 	str = NULL;
 	if (all_error(argc, argv, str, &t))
 		return (-1);
 	map = solve(t);
-	// map = ini_map(size, 90);
-	// ft_putstr("La map au départ\n");
-	// display_map(map);
-	// retplace = place(t, map, pmap);
-	// ft_putstr("Retplace = ");
-	// ft_putnbr(retplace);
-	// ft_putchar('\n');
-	// ft_putstr("La map après\n");
-	// display_map(map);
-	// retremove = remove_p(t, map);
-	// ft_putstr("Retremove = ");
-	// ft_putnbr(retremove);
-	// ft_putchar('\n');
-	// ft_putstr("La map après\n");
 	display_map(map);
-	//print_all_list(t);
 	return (0);
 }
