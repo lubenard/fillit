@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2019/01/02 12:35:53 by lubenard         ###   ########.fr        #
+#    Updated: 2019/01/03 15:03:38 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,4 +59,4 @@ mclean: all clean
 cleanexe:
 	@rm -f $(NAME)
 
-re: fcleanall
+re: fclean all
