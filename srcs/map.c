@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/03 13:03:21 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/04 18:03:13 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**ini_map(int size, int max)
 		return (NULL);
 	while (y < max)
 	{
-		if (!(map[y] = (char *)malloc(sizeof(char) * max + 1)))
+		if (!(map[y] = (char *)malloc(sizeof(char) * (max + 1))))
 			return (NULL);
 		x = 0;
 		if (y < size)
@@ -71,11 +71,6 @@ void	display_map(char **map)
 	}
 	y = 0;
 	while (y < 20)
-	{
-		//printf("AVANT: map[%d] = %s\n",y ,map[y]);
-		free(map[y]); //Ne free rien, jsp pq... Résoudrait 80% des leaks
-		//printf("APRES: map[%d] = %s\n", y, map[y]);
-		y++;
-	}
+		free(map[y++]);
 	free(map);
 }

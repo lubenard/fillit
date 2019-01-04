@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/03 14:50:51 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/04 18:04:42 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,11 @@
 ** si pos.x et pos.y == size ini map size++;
 */
 
-char	**solve(t_tetri *t)
+char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 {
-	char	**map;
-	int		size;
-	t_coord	pmap;
+	int relaunch;
 
-	size = 2;
-	map = ini_map(size, 20); // free map ou leaks
-	ici:
+	relaunch = 0;
 	while (1)
 	{
 		if (t->pos.y == -1)
@@ -61,30 +57,55 @@ char	**solve(t_tetri *t)
 					else
 					{
 						t = t->next;
-						goto ici;
+						relaunch = 1;
+						break ;
 					}
 				}
 				pmap.x++;
 			}
+			if (relaunch == 1)
+				break ;
 			pmap.x = -1;
 			pmap.y++;
 		}
+		if (relaunch == 1)
+		{
+			relaunch = 0;
+			continue ;
+		}
 		if (t->letter == 'A' && t->prev == NULL)
 		{
-			t->pos.y = -1; // mettre dans remove_end meme  si erreur
+			t->pos.y = -1; // mettre dans remove_end meme si erreur
 			t->pos.x = -1;
-			map = ini_map(++size, 90); // free map ou leaks
+			map = ini_map(++size, 20); // free map ou leaks NON, SANS BLAGUE
 			continue ;
 		}
 		else if (t->letter != 'A' && t->prev != NULL)
 		{
-			t->pos.y = -1; // mettre dans remove_end meme  si erreur
+			t->pos.y = -1; // mettre dans remove_end meme si erreur
 			t->pos.x = -1;
 			t = t->prev;
 		}
 		else
 			ft_putstr("Wtf\n");
 	}
+	return (NULL);
+}
+
+char	**solve(t_tetri *t)
+{
+	char	**map;
+	int		size;
+	t_coord	pmap;
+	char	**ret_val;
+
+	size = 2;
+	pmap.x = 0;
+	pmap.y = 0;
+	map = ini_map(size, 20); // free map ou leaks
+	ret_val = compute_solve(pmap, t, map, size);
+	if (ret_val != NULL)
+		return (ret_val);
 	ft_putstr("Fin de solve anormal\n");
 	return (map);
 }

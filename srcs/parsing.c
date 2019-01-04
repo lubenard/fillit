@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/04 14:08:23 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/04 16:03:22 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,11 @@ t_tetri		*parsing(char *str)
 	{
 		while (lkd_list->next != NULL)
 		{
-		//printf("AVANT\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
 			free(lkd_list->tetrimino[0]);
 			free(lkd_list->tetrimino[1]);
 			free(lkd_list->tetrimino[2]);
 			free(lkd_list->tetrimino[3]);
 			free(lkd_list->tetrimino);
-			//printf("APRES\nLettre = %c\nlkd_list->tetrimino[0] = %s\nlkd_list->tetrimino[1] = %s\nlkd_list->tetrimino[2] = %s\nlkd_list->tetrimino[3] = %s\nnext = %p\n\n", lkd_list->letter, lkd_list->tetrimino[0], lkd_list->tetrimino[1], lkd_list->tetrimino[2], lkd_list->tetrimino[3], lkd_list->next);
 			free(lkd_list);
 			lkd_list = lkd_list->next;
 		}
