@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/03 15:32:40 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/05 16:42:21 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,17 @@ int		main(int argc, char **argv)
 	if (all_error(argc, argv, str, &t))
 		return (-1);
 	map = solve(t);
+	while (t->next)
+	{
+		printf("Just freed letter %c\n next = %p\n", t->letter, t->next);
+		free(t->tetrimino[0]);
+		free(t->tetrimino[1]);
+		free(t->tetrimino[2]);
+		free(t->tetrimino[3]);
+		free(t->tetrimino);
+		free(t);
+		t = t->next;
+	}
 	display_map(map);
 	return (0);
 }

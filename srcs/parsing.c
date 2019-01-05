@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/04 16:03:22 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/05 16:58:31 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_tetri		*new_tetrimino(void)
 {
 	t_tetri		*list;
 
-	if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
+if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
 		return (0);
 	if (!(list->tetrimino = (char **)malloc(sizeof(char *) * 4)))
 		return (NULL);
