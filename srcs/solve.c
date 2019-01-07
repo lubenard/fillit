@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 11:34:36 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/07 16:24:59 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 		}
 		if (t->letter == 'A' && t->prev == NULL)
 		{
+			remove_end(t, map);
 			t->pos.y = -1; // mettre dans remove_end meme si erreur
 			t->pos.x = -1;
 			while (i < 20)
@@ -88,9 +89,11 @@ char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 		}
 		else if (t->letter != 'A' && t->prev != NULL)
 		{
+			remove_end(t, map);
 			t->pos.y = -1; // mettre dans remove_end meme si erreur
 			t->pos.x = -1;
 			t = t->prev;
+			remove_p(t, map);
 		}
 		else
 			ft_putstr("Wtf\n");

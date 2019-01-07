@@ -6,7 +6,7 @@
 /*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:49:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 13:57:25 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/07 14:56:58 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		main(int argc, char **argv)
 		free_tetri(t);
 		t = t->next;
 	}
+	free(t);
 	display_map(map);
 	return (0);
 }
