@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 13:26:51 by lubenard          #+#    #+#             */
-/*   Updated: 2018/12/12 15:00:41 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/01/07 17:29:39 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ int		error(void)
 {
 	ft_putstr("error\n");
 	return (-1);
+}
+
+char	putletter(void)
+{
+	static char letter = 'A';
+
+	return (letter++);
 }
