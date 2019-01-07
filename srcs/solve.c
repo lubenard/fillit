@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/05 16:05:07 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/07 11:34:36 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 {
 	int relaunch;
+	int i;
 
+	i = 0;
 	relaunch = 0;
 	while (1)
 	{
@@ -77,10 +79,10 @@ char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 		{
 			t->pos.y = -1; // mettre dans remove_end meme si erreur
 			t->pos.x = -1;
-			int i = 0;
 			while (i < 20)
 				free(map[i++]);
 			free(map);
+			i = 0;
 			map = ini_map(++size, 20);// free map ou leaks NON, SANS BLAGUE
 			continue ;
 		}

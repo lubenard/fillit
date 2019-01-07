@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2019/01/04 15:27:17 by lubenard         ###   ########.fr        #
+#    Updated: 2019/01/07 11:30:15 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = srcs/main.c \
 	  srcs/map.c \
 	  srcs/make_coord.c \
 	  srcs/print_all_list.c \
-	  srcs/piece.c
+	  srcs/piece.c \
+	  srcs/free.c
 
 OBJ = $(SRC:.c=.o)
 

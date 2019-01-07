@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/03 12:44:07 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/07 11:25:17 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char			**ini_map(int size, int max);
 void			display_map(char **map);
 int				verif_tetrimino(char **str);
 int				optimize_tetri(char **str);
-void			print_all_list(t_tetri *t);
-void			print_list(t_tetri *t);
+void			free_tetri(t_tetri *t);
 
 #endif

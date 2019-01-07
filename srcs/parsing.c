@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/05 16:58:31 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/07 12:54:22 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_tetri		*new_tetrimino(void)
 {
 	t_tetri		*list;
 
-if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
+	if (!(list = (t_tetri *)malloc(sizeof(t_tetri))))
 		return (0);
 	if (!(list->tetrimino = (char **)malloc(sizeof(char *) * 4)))
 		return (NULL);
@@ -51,12 +51,7 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
 		{
-			free(lkd_list->tetrimino[0]);
-			free(lkd_list->tetrimino[1]);
-			free(lkd_list->tetrimino[2]);
-			free(lkd_list->tetrimino[3]);
-			free(lkd_list->tetrimino);
-			free(lkd_list);
+			free_tetri(lkd_list);
 			return (-1);
 		}
 		optimize_tetri(lkd_list->tetrimino);
@@ -88,12 +83,7 @@ t_tetri		*parsing(char *str)
 	{
 		while (lkd_list->next != NULL)
 		{
-			free(lkd_list->tetrimino[0]);
-			free(lkd_list->tetrimino[1]);
-			free(lkd_list->tetrimino[2]);
-			free(lkd_list->tetrimino[3]);
-			free(lkd_list->tetrimino);
-			free(lkd_list);
+			free_tetri(lkd_list);
 			lkd_list = lkd_list->next;
 		}
 		return (NULL);

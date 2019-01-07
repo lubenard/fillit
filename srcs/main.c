@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 18:40:05 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/05 16:42:21 by lubenard         ###   ########.fr       */
+/*   Created: 2019/01/07 10:49:54 by lubenard          #+#    #+#             */
+/*   Updated: 2019/01/07 13:57:25 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,9 @@ int		main(int argc, char **argv)
 	if (all_error(argc, argv, str, &t))
 		return (-1);
 	map = solve(t);
-	while (t->next)
+	while (t)
 	{
-		printf("Just freed letter %c\n next = %p\n", t->letter, t->next);
-		free(t->tetrimino[0]);
-		free(t->tetrimino[1]);
-		free(t->tetrimino[2]);
-		free(t->tetrimino[3]);
-		free(t->tetrimino);
-		free(t);
+		free_tetri(t);
 		t = t->next;
 	}
 	display_map(map);
