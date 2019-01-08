@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 17:29:53 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/08 13:40:48 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int				verif_tetrimino(char **str);
 int				optimize_tetri(char **str);
 void			free_tetri(t_tetri *t);
 char			putletter(void);
+int				compute_parsing(char *str, int i);
 
 #endif

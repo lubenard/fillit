@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 18:10:14 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/08 14:33:16 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ void		compute_parsing_2(t_tetri *lkd_list)
 	optimize_tetri(lkd_list->tetrimino);
 	make_coord_p(lkd_list);
 	lkd_list->letter = putletter();
-}
-
-int			compute_parsing(char *str, int i)
-{
-	while (str[i] != '\n' && str[i])
-		i++;
-	return (i);
 }
 
 int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)

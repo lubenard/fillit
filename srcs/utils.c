@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 13:26:51 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 17:29:39 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/08 13:58:46 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,11 @@ char	putletter(void)
 	static char letter = 'A';
 
 	return (letter++);
+}
+
+int		compute_parsing(char *str, int i)
+{
+	while (str[i] != '\n' && str[i])
+		i++;
+	return (i);
 }
