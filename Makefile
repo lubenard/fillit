@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2019/01/07 16:25:24 by lubenard         ###   ########.fr        #
+#    Updated: 2019/01/08 20:32:58 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 GREEN_OK = "\033[0;32mDONE !\033[00m"
 
@@ -52,6 +52,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -r fillit.dSYM
 	@cd libft && rm -f libft.a
 	@echo fclean fillit ${GREEN_OK}
 
