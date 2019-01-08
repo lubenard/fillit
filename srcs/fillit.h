@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/08 13:40:48 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:25:41 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ typedef struct	s_tetrimino
 	struct s_tetrimino	*next;
 }				t_tetri;
 
-/*
-**char			**placeone(t_tetri *t, char **map, int size);
-**test d'algo a enlever dans version non final
-*/
 char			**solve(t_tetri *t);
 int				remove_p(t_tetri *t, char **map);
 int				remove_end(t_tetri *t, char **map);
