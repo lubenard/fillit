@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:59:51 by jmoussu           #+#    #+#             */
-/*   Updated: 2018/12/29 08:54:43 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/09 23:05:46 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		remove_end(t_tetri *t, char **map)
 	int		k;
 
 	k = 0;
-	if (t->pos.x < 0 || t->pos.y < 0)
+	if (t->pos.x < 0 && t->pos.y < 0)
 		return (-1);
 	while (k < 4)
 	{
