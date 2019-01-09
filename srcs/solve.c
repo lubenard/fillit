@@ -3,118 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/08 20:30:46 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/01/09 12:31:45 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		compute_end(int *r, t_tetri **t, char ***m, int *s)
+char	**compute_solve(t_coord pmap, t_tetri *t, char **map, int size)
 {
-	int	i;
-
+	int relaunch;
+	int i;
 	i = 0;
-	if (*r == 1)
-	{
-		*r = 0;
-		return (1);
-	}
-	if ((*t)->letter == 'A' && (*t)->prev == NULL)
-	{
-		remove_end(*t, *m);
-		while (i < 20)
-			free((*m)[i++]);
-		free(*m);
-		i = 0;
-		*m = ini_map(++(*s), 20);
-		return (1);
-	}
-	if ((*t)->letter != 'A' && (*t)->prev != NULL)
-	{
-		remove_end(*t, *m);
-		*t = (*t)->prev;
-		remove_p(*t, *m);
-	}
-	return (0);
-}
-
-int		w(intptr_t *args, t_tetri **t, char ***m, t_coord *pm)
-{
-	while ((*pm).x != *((int *)args[1]))
-	{
-		if (!(place(*t, *m, *pm)))
-		{
-			if ((*t)->next == NULL)
-				return (1);
-			else
-			{
-				*t = (*t)->next;
-				*((int *)args[0]) = 1;
-				return (0);
-			}
-		}
-		(*pm).x++;
-	}
-	return (0);
-}
-
-void	posx(t_tetri **t, t_coord *pm)
-{
-	if ((*t)->pos.x == -1)
-		(*pm).x = 0;
-	else
-	{
-		(*pm).x = (*t)->pos.x + 1;
-		(*t)->pos.x = -1;
-	}
-}
-
-char	**compute_solve(t_coord pm, t_tetri *t, char **m, int s)
-{
-	int r;
-
-	r = 0;
+	relaunch = 0;
 	while (1)
 	{
 		if (t->pos.y == -1)
-			pm.y = 0;
+			pmap.y = 0; // 0 si pos = -1 sinon recuperer pos je supose
 		else
-			pm.y = t->pos.y;
-		while (pm.y != s)
+			pmap.y = t->pos.y;
+		while (pmap.y != size)
 		{
-			posx(&t, &pm);
-			if (w((intptr_t[2]){(intptr_t)&r, (intptr_t)&s}, &t, &m, &pm) == 1)
-				return (m);
-			if (r == 1)
+			if (t->pos.x == -1)
+				pmap.x = 0;
+			else
+			{
+				pmap.x = t->pos.x + 1;
+				t->pos.x = -1;
+			}
+			while (pmap.x != size)
+			{
+				if (!(place(t, map, pmap)))
+				{
+					if (t->next == NULL)
+						return (map);
+					else
+					{
+						t = t->next;
+						relaunch = 1;
+						break ;
+					}
+				}
+				pmap.x++;
+			}
+			if (relaunch == 1)
 				break ;
-			pm.x = -1;
-			pm.y++;
+			pmap.x = -1;
+			pmap.y++;
 		}
-		if (compute_end(&r, &t, &m, &s) == 1)
+		if (relaunch == 1)
+		{
+			relaunch = 0;
 			continue ;
+		}
+		if (t->letter == 'A' && t->prev == NULL)
+		{
+			remove_end(t, map);
+			t->pos.y = -1; // mettre dans remove_end meme si erreur
+			t->pos.x = -1;
+			while (i < 20)
+				free(map[i++]);
+			free(map);
+			i = 0;
+			map = ini_map(++size, 20);// free map ou leaks NON, SANS BLAGUE
+			continue ;
+		}
+		else if (t->letter != 'A' && t->prev != NULL)
+		{
+			remove_end(t, map);
+			t->pos.y = -1; // mettre dans remove_end meme si erreur
+			t->pos.x = -1;
+			t = t->prev;
+			remove_p(t, map);
+		}
+		else
+			ft_putstr("Wtf\n");
 	}
 	return (NULL);
 }
-
 char	**solve(t_tetri *t)
 {
-	char	**m;
-	int		s;
-	t_coord	pm;
+	char	**map;
+	int		size;
+	t_coord	pmap;
 	char	**ret_val;
-
-	s = 2;
-	pm.x = 0;
-	pm.y = 0;
-	m = ini_map(s, 20);
-	ret_val = compute_solve(pm, t, m, s);
+	size = 2;
+	pmap.x = 0;
+	pmap.y = 0;
+	map = ini_map(size, 20); // free map ou leaks
+	ret_val = compute_solve(pmap, t, map, size);
 	if (ret_val != NULL)
 		return (ret_val);
 	ft_putstr("Fin de solve anormal\n");
-	return (m);
+	return (map);
 }
 
 /*
