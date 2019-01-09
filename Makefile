@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2019/01/08 20:32:58 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/01/09 22:04:41 by jmoussu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 GREEN_OK = "\033[0;32mDONE !\033[00m"
 
@@ -35,7 +35,7 @@ all:  $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft && make
-	@clang -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
+	@clang -o $(NAME) $(CFLAGS) $(OBJ) libft/libft.a -Isrcs/
 	@echo fillit ${GREEN_OK}
 
 %.o : %.c
@@ -52,7 +52,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -r fillit.dSYM
+	@rm -rf fillit.dSYM
 	@cd libft && rm -f libft.a
 	@echo fclean fillit ${GREEN_OK}
 

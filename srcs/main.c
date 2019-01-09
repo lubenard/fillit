@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubenard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:49:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/07 14:56:58 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/09 21:55:59 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		main(int argc, char **argv)
 	char	*str;
 	char	**map;
 	t_tetri	*t;
+	t_tetri	*tmp;
 
 	str = NULL;
 	if (all_error(argc, argv, str, &t))
@@ -73,10 +74,11 @@ int		main(int argc, char **argv)
 	map = solve(t);
 	while (t)
 	{
+		tmp = t->next;
 		free_tetri(t);
-		t = t->next;
+		t = tmp;
 	}
-	free(t);
+	//free(t);
 	display_map(map);
 	return (0);
 }
