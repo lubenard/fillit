@@ -6,7 +6,7 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/08 14:33:16 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:57:54 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ t_tetri		*new_tetrimino(void)
 	return (list);
 }
 
+int			loop_parsing(t_tetri *lkd_list, int i, char *str)
+{
+	lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
+	i = compute_parsing(str, i);
+	lkd_list->tetrimino[1] = ft_strsub(str, ++i, 4);
+	i = compute_parsing(str, i);
+	lkd_list->tetrimino[2] = ft_strsub(str, ++i, 4);
+	i = compute_parsing(str, i);
+	lkd_list->tetrimino[3] = ft_strsub(str, ++i, 4);
+	i = compute_parsing(str, i);
+	return (i);
+}
+
 void		compute_parsing_2(t_tetri *lkd_list)
 {
 	optimize_tetri(lkd_list->tetrimino);
@@ -36,14 +49,7 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 {
 	while (str[i])
 	{
-		lkd_list->tetrimino[0] = ft_strsub(str, i, 4);
-		i = compute_parsing(str, i);
-		lkd_list->tetrimino[1] = ft_strsub(str, ++i, 4);
-		i = compute_parsing(str, i);
-		lkd_list->tetrimino[2] = ft_strsub(str, ++i, 4);
-		i = compute_parsing(str, i);
-		lkd_list->tetrimino[3] = ft_strsub(str, ++i, 4);
-		i = compute_parsing(str, i);
+		i = loop_parsing(lkd_list, i, str);
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
 		{

@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   make_coord.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 15:53:40 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/02 15:08:52 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:23:26 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int			compute_make_coord_p(t_tetri *t, int i, int j, int k)
+{
+	if (t->tetrimino[j][i] == '#')
+	{
+		t->c[k].x = i;
+		t->c[k].y = j;
+		k++;
+	}
+	return (k);
+}
+
 t_tetri		*make_coord_p(t_tetri *t)
 {
-	char	**tab;
 	int		i;
 	int		j;
 	int		k;
 
-	tab = t->tetrimino;
 	k = 0;
 	j = 0;
 	while (j != 4)
@@ -27,12 +36,7 @@ t_tetri		*make_coord_p(t_tetri *t)
 		i = 0;
 		while (i != 4)
 		{
-			if (tab[j][i] == '#')
-			{
-				t->c[k].x = i;
-				t->c[k].y = j;
-				k++;
-			}
+			k = compute_make_coord_p(t, i, j, k);
 			i++;
 		}
 		j++;
