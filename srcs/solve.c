@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 10:59:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/10 00:10:53 by jmoussu          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:27:26 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ char	**solve(t_tetri *t)
 	ret_val = compute_solve(pm, t, m, s);
 	if (ret_val != NULL)
 		return (ret_val);
-	ft_putstr("Fin de solve anormal\n");
 	return (m);
 }
 
