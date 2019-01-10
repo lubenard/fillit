@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:49:54 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/10 12:16:51 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/10 17:45:36 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int		main(int argc, char **argv)
 		free_tetri(t);
 		t = tmp;
 	}
-	free(t);
 	display_map(map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:59:51 by jmoussu           #+#    #+#             */
-/*   Updated: 2019/01/10 10:29:18 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/10 17:58:29 by jmoussu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int		remove_end(t_tetri *t, char **map)
 		return (-1);
 	while (k < 4)
 	{
-		if (map[t->c[k].y + t->pos.y][t->c[k].x + t->pos.x] == t->letter)
+		if (t->pos.x != -1 && t->pos.y != -1 &&
+		map[t->c[k].y + t->pos.y][t->c[k].x + t->pos.x] == t->letter)
 			map[t->c[k].y + t->pos.y][t->c[k].x + t->pos.x] = '.';
 		k++;
 	}
