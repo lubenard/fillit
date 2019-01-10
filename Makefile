@@ -6,7 +6,7 @@
 #    By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:01:46 by lubenard          #+#    #+#              #
-#    Updated: 2019/01/10 18:09:42 by jmoussu          ###   ########.fr        #
+#    Updated: 2019/01/10 23:24:55 by lubenard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 GREEN_OK = "\033[0;32mDONE !\033[00m"
 
@@ -42,7 +42,10 @@ $(NAME): $(OBJ)
 
 onlyfillit:
 	@clang -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -Isrcs/
-	@echo onlyfillit ${GREEN_OK}
+	@echo fillit ${GREEN_OK}
+
+onlylibft:
+	@cd libft && make
 
 clean:
 	@rm -f $(OBJ)
