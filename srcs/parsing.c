@@ -6,11 +6,13 @@
 /*   By: lubenard <lubenard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:01:32 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/09 11:57:54 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/11 18:49:07 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+#include <stdio.h>
 
 t_tetri		*new_tetrimino(void)
 {
@@ -53,7 +55,12 @@ int			compute(t_tetri *lkd_list, t_tetri *new_element, int i, char *str)
 		i += 2;
 		if (verif_tetrimino(lkd_list->tetrimino) == -1)
 		{
-			free_tetri(lkd_list);
+			if (lkd_list->prev == NULL)
+			{
+				free_tetri(lkd_list);
+				return (-2);
+			}
+			lkd_list->prev->next = lkd_list;
 			return (-1);
 		}
 		compute_parsing_2(lkd_list);
@@ -74,20 +81,26 @@ t_tetri		*parsing(char *str)
 	t_tetri		*lkd_list;
 	t_tetri		*new_element;
 	int			i;
+	t_tetri		*tmp;
+	int			j;
 
 	i = 0;
 	new_element = NULL;
 	if (!(lkd_list = new_tetrimino()))
 		return (NULL);
-	if (compute(lkd_list, new_element, i, str) == -1)
+	j = compute(lkd_list, new_element, i, str);
+	if (j == -1)
 	{
-		while (lkd_list->next != NULL)
+		while (lkd_list)
 		{
+			tmp = lkd_list->next;
 			free_tetri(lkd_list);
-			lkd_list = lkd_list->next;
+			lkd_list = tmp;
 		}
 		return (NULL);
 	}
+	else if (j == -2)
+		return (NULL);
 	ft_strdel(&str);
 	return (lkd_list);
 }
