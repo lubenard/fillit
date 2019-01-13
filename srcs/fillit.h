@@ -6,7 +6,7 @@
 /*   By: jmoussu <jmoussu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:22:26 by lubenard          #+#    #+#             */
-/*   Updated: 2019/01/10 10:25:32 by lubenard         ###   ########.fr       */
+/*   Updated: 2019/01/13 05:22:46 by lubenard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
-
-# include <stdio.h>
 
 # define BUFF 1024
 
