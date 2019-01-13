@@ -1,4 +1,4 @@
-# # Fillit
+## Fillit
 
 Fillit, projet en lien avec Tetris !
 
