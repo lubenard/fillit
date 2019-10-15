@@ -29,3 +29,7 @@ time ./fillit testfile_6p
 Pour récuperer le sujet, il suffit de télécharger le repo, le sujet se nomme fillit.fr.pdf
 
 ⚠️ Le sujet est tel qu'il était quand ce projet à été validé, il est suceptible d'évoluer avec le temps ⚠️
+
+# contributor
+
+https://github.com/lubenard
