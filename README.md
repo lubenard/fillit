@@ -15,7 +15,7 @@ Cela va lancer également la compilation du deuxieme Makefile, dans le dossier l
 
 # Comment l'utiliser ?
 
-Une fois compilé, il suffit de l'executer en lancant:
+Une fois compilé, il suffit de l'executer en lançant:
 ```
 ./fillit testfile_6p
 ```
